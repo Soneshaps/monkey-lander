@@ -4,6 +4,7 @@ class Background{
         this.y = 0;
     }
     update(ctx){
+
         ctx.drawImage(backgroundImage,this.x,this.y);    
     }
 }

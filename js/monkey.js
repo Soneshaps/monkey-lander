@@ -30,8 +30,7 @@ class Monkey{
   
     update(ctx){
         this.landingClock += 1
-
-        // // if(game.gameState === 1){
+        // if(game.gameState === 1){
                 this.y += this.gravitySpeed;
 
         this.gravitySpeed += this.gravity;
@@ -64,7 +63,7 @@ class Monkey{
     }
 
     left(){
-        this.gravitySpeed = this.gravitySpeed /1.05 
+        this.gravitySpeed = this.gravitySpeed  
 
         this.x -= this.xRightSpeed;
         if(this.xRightSpeed > 3.8){
@@ -77,7 +76,7 @@ class Monkey{
 
     }
     right(){
-        this.gravitySpeed = this.gravitySpeed /1.05 
+        this.gravitySpeed = this.gravitySpeed  
 
         this.x += this.xLeftSpeed;
         if(this.xLeftSpeed > 3.8){

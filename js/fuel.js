@@ -5,23 +5,30 @@ class Fuel{
         this.width = 235
         this.height = 27
         this.x = 735
-        this.y = 55
+        this.y = 65
 
         this.fuelHealth = 228
 
     }
     update(ctx){
-        ctx.clearRect(735, 55, 235 , 27);
+        ctx.beginPath()
+        ctx.moveTo(680,70)
+        ctx.lineTo(800,70)
+        
+        ctx.closePath()
+
+
+
+        // ctx.clearRect(735, 60, 235 , 27);
         ctx.beginPath();
         ctx.fillStyle = "#66cc00";
-        ctx.rect(737.5, 59, this.fuelHealth, 20);
+        ctx.rect(737.5, 64, this.fuelHealth, 20);
         ctx.fill()
         ctx.closePath();
-        ctx.font = "14px Arial";
+        ctx.font = "14px 'Nunito', sans-serif";
         ctx.fillStyle = "#ffffff";
         ctx.strokeStyle = "#ffffff";
-        ctx.strokeText("COCONUT FUEL", 780, 74);
-        ctx.drawImage(this.fuelImage,0,0,this.width,this.height,this.x,this.y,this.width,this.height)
+        ctx.strokeText("COCONUT FUEL", 780, 78);
 
         if(this.fuelHealth < 0){
             game.monkey.downThrust = 0
@@ -35,7 +42,7 @@ class Fuel{
 
     decreaseFuel(){
         if(this.fuelHealth > 0){
-            this.fuelHealth -= .4
+            this.fuelHealth -= .2
         }
 
     }

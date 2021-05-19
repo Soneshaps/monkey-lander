@@ -7,22 +7,35 @@ class Game{
         this.monkey = new Monkey() 
         this.landingSpace = new LandingSpace()
         this.banana = new Banana()
+        this.bananaLeft = new BananaLeft()
+        this.score = new Score()
+        this.missionP = new MissionP()
         this.level = 0
         this.state = 1
+        this.gameClock = 0
     }
     update(){
         if(this.state === 1){
+            this.gameClock += 1
             this.background.update(this.context)
             this.monkeyLife.update(this.context)
             this.fuel.update(this.context)
+            this.bananaLeft.update(this.context)
             this.banana.update(this.context)
-            this.monkey.update(this.context)
-            this.checkBorderCollision()
+            // this.monkey.update(this.context)
+            this.score.update(this.context)
 
+            this.checkBorderCollision()
+            this.bananaCollision(this.monkey,this.banana)
+            
+            if(this.gameClock % 6 === 0){
+                this.banana.hang()
+            }
             //after collecting all bananas
-            this.landingSpace.update(this.context)
-            landingCollision(this.monkey,this.landingSpace)
-            bananaCollision(this.monkey,this.banana)
+            if(game.banana.bananaLeftToCollect === 0){
+                this.landingSpace.update(this.context)
+                this.landingCollision(this.monkey,this.landingSpace)
+            }
         }
         if(this.state === 2){
             this.background.update(this.context)
@@ -40,6 +53,7 @@ class Game{
             this.dead()
         }
     }
+
     checkPoint(){
         this.monkey.y = 200
         this.monkey.x = 200
@@ -47,6 +61,47 @@ class Game{
         this.monkey.downThrust = -0.12
         this.monkey.xGravity = 0.12
         this.monkey.xRightGravity = 0.12
+    }
+
+    landingCollision(rect1,rect2){
+        if (rect1.x < rect2.x + rect2.width &&
+            rect1.x + rect1.width > rect2.x &&
+            rect1.y < rect2.y + rect2.height &&
+            rect1.y + rect1.height > rect2.y) {
+             if(this.monkey.landingClock < 50 && (rect2.x + rect1.width - 28.9) < (rect1.x + rect1.width) && (rect2.x + rect2.width) > (rect1.x + rect1.width - 30.24)){
+                 //Stopping the gravity and speed 
+                this.monkey.gravitySpeed = 0;
+                this.monkey.gravity = 0;
+                this.monkey.landingClock = 0
+                this.monkey.xLeftSpeed = 0
+                this.monkey.xRightSpeed = 0
+                this.monkey.xGravity = 0
+                this.monkey.xRightGravity = 0
+                this.monkey.downThrust = 0
+                this.monkey.static() 
+                this.missionP.update(this.context)
+                if(this.fuel.fuelHealth >= 0){
+                    score += 1
+                    this.fuel.decreaseFuel()
+                }        
+                }else{
+                 this.dead()
+             }
+         }         
+    }
+
+    bananaCollision(rect1,rect2){
+        for (let index = 0; index < this.banana.position[this.level].length; index++) {
+            // console.log(rect2.position[this.level][index].y)
+            if (rect1.x < rect2.position[this.level][index].x + rect2.width &&
+                rect1.x + rect1.width > rect2.position[this.level][index].x &&
+                rect1.y < rect2.position[this.level][index].y + rect2.height &&
+                rect1.y + rect1.height > rect2.position[this.level][index].y) {
+                    this.banana.position[this.level].splice(index,1)
+                    this.banana.bananaLeftToCollect -= 1 
+                    score += 200
+                } 
+        }        
     }
 
     dead(){
@@ -72,43 +127,9 @@ let game = new Game(context)
     
 // }
 
-function landingCollision(rect1,rect2){
-    if (rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.width > rect2.x &&
-        rect1.y < rect2.y + rect2.height &&
-        rect1.y + rect1.height > rect2.y) {
-         if(game.monkey.landingClock < 50 && (rect2.x + rect1.width - 28.9) < (rect1.x + rect1.width) && (rect2.x + rect2.width) > (rect1.x + rect1.width - 30.24)){
-             //Stopping the gravity and speed 
-            game.monkey.gravitySpeed = 0;
-            game.monkey.gravity = 0;
-            game.monkey.landingClock = 0
-            game.monkey.xLeftSpeed = 0
-            game.monkey.xRightSpeed = 0
-            game.monkey.xGravity = 0
-            game.monkey.xRightGravity = 0
-            game.monkey.downThrust = 0
 
-            
-            game.monkey.static()
 
-            
-        }else{
-             game.dead()
-         }
-     }         
-}
 
-function bananaCollision(rect1,rect2){
-    for (let index = 0; index < game.banana.position[game.level].length; index++) {
-        // console.log(rect2.position[game.level][index].y)
-        if (rect1.x < rect2.position[game.level][index].x + rect2.width &&
-            rect1.x + rect1.width > rect2.position[game.level][index].x &&
-            rect1.y < rect2.position[game.level][index].y + rect2.height &&
-            rect1.y + rect1.height > rect2.position[game.level][index].y) {
-                console.log('kera khayo !')
-            } 
-    }        
-}
 
 document.addEventListener('keydown',function(e){
     if(e.key === 'ArrowUp'){
@@ -141,4 +162,3 @@ function gameOn(){
 gameOn()
 
 
-console.log(game.banana.position[0].length)

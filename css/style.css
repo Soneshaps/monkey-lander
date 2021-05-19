@@ -3,7 +3,23 @@
     margin: 0;
 }
 
+@font-face {
+    font-family: Nunito;
+    src: url('../fonts/Nunito-Regular.ttf');
+}
+
+@font-face {
+    font-family: Nunito-Bold;
+    src: url('../fonts/Nunito-Bold.ttf');
+}
+
+@font-face {
+    font-family: Nunito-ExtraBold;
+    src: url('../fonts/Nunito-ExtraBold.ttf');
+}
+
 body{
+    font-family: Nunito;
     background-color: #ebebeb;
 }
 
