@@ -12,4 +12,4 @@ let score = 0
 let backgroundImage = new Image()
 backgroundImage.src = 'images/background.png'
 
-
+let leftpressed, rightpressed, uppressed;

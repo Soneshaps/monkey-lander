@@ -2,6 +2,13 @@ class Monkey{
     constructor(){
 
         this.fuel = new Fuel();
+        this.canPlay = true
+        this.movementFactor = 0.2;
+        this.horizontalSpeed = 0;
+        this.horizontalSpeedFactor = 0.2;
+
+        this.verticalSpeed = 0;
+        this.verticalSpeedFactor = 0.05;
 
         this.width = 191.6;
         this.height = 105;
@@ -18,8 +25,8 @@ class Monkey{
         this.gravity = 0.0098;
         this.landingClock = 0
 
-        this.xLeftSpeed = 0
-        this.xRightSpeed = 0
+       // this.xLeftSpeed = 0
+        //this.xRightSpeed = 0
 
         this.xGravity = 0.15
         this.xRightGravity = 0.15
@@ -29,63 +36,62 @@ class Monkey{
         }
   
     update(ctx){
+        ctx.drawImage(this.monkeyImage,this.sX,this.sY,this.width,this.height,this.x,this.y,this.width,this.height);    
+        if(!this.canPlay)
+        return
         this.landingClock += 1
-        // if(game.gameState === 1){
-                this.y += this.gravitySpeed;
+        this.y += this.gravitySpeed+this.verticalSpeed;
+        this.gravitySpeed += this.gravity;    
 
-        this.gravitySpeed += this.gravity;
-            
-        // // }
-        // ctx.translate(this.x,this.y)
-        // ctx.rotate(this.translateDegree)
-        ctx.drawImage(this.monkeyImage,this.sX,this.sY,this.width,this.height,this.x,this.y,this.width,this.height)
-        // ctx.rotate(-this.translateDegree)
-        // ctx.translate(-this.x,-this.y)
+                
+        if(uppressed)
+            this.up();
+        else{
+            if(this.verticalSpeed < 0){
+                this.verticalSpeed += this.verticalSpeedFactor;               
+            }
+        }
 
+        //horizontal
+
+        this.x += this.horizontalSpeed * this.movementFactor;
+
+        if(rightpressed){
+            this.right();
+        }
+        else if(leftpressed){
+            this.left();
+        }else{
+            if (Math.abs(this.horizontalSpeed) > 0){
+                if(this.horizontalSpeed > 0)
+                    this.horizontalSpeed -=  this.horizontalSpeedFactor;
+                else if(this.horizontalSpeed < 0)
+                    this.horizontalSpeed +=  this.horizontalSpeedFactor;
+            }
+        }
     }
-    static(){
-        this.gravitySpeed = this.gravitySpeed
-        this.gravity = 0.0098;
-        this.xLeftSpeed = 0
-        this.xRightSpeed = 0
+
+    static(){      
         this.sY = 0
-
-
     }
 
     up(){
         this.landingClock = 0
-        this.gravitySpeed = this.gravitySpeed
-        this.y += this.gravitySpeed
-        this.gravitySpeed += this.downThrust
+        this.verticalSpeed -= this.verticalSpeedFactor;
 
         this.sY = 124
     }
 
     left(){
-        this.gravitySpeed = this.gravitySpeed  
-
-        this.x -= this.xRightSpeed;
-        if(this.xRightSpeed > 3.8){
-            this.xRightGravity = 0
-        }else{
-            this.xRightGravity = 0.07
-        }
-        this.xRightSpeed += this.xRightGravity;
+    
+        this.horizontalSpeed -=  this.horizontalSpeedFactor;
         this.sY = 389.8
-
     }
+
     right(){
-        this.gravitySpeed = this.gravitySpeed  
-
-        this.x += this.xLeftSpeed;
-        if(this.xLeftSpeed > 3.8){
-            this.xGravity = 0
-        }else{
-            this.xGravity = 0.07
-        }
-        this.xLeftSpeed += this.xGravity;
+       // this.gravitySpeed = this.gravitySpeed;
+        this.horizontalSpeed +=  this.horizontalSpeedFactor;
         this.sY = 253.4
-
     }
+    
 }

@@ -62,9 +62,9 @@ class Game {
     this.monkey.y = 200;
     this.monkey.x = 200;
     this.fuel.fuelHealth = 300;
-    this.monkey.downThrust = -0.12;
     this.monkey.xGravity = 0.12;
-    this.monkey.xRightGravity = 0.12;
+    this.horizontalSpeed = 0;
+    this.verticalSpeed = 0;
   }
 
   landingCollision(rect1, rect2) {
@@ -80,14 +80,14 @@ class Game {
         rect2.x + rect2.width > rect1.x + rect1.width - 30.24
       ) {
         //Stopping the gravity and speed
-        this.monkey.gravitySpeed = 0;
-        this.monkey.gravity = 0;
-        this.monkey.landingClock = 0;
-        this.monkey.xLeftSpeed = 0;
-        this.monkey.xRightSpeed = 0;
-        this.monkey.xGravity = 0;
-        this.monkey.xRightGravity = 0;
-        this.monkey.downThrust = 0;
+        // this.monkey.gravitySpeed = 0;
+        this.monkey.canPlay = false
+        // this.monkey.landingClock = 0;
+        // this.monkey.xLeftSpeed = 0;
+        // this.monkey.xRightSpeed = 0;
+        // this.monkey.xGravity = 0;
+        // this.monkey.xRightGravity = 0;
+        // this.monkey.downThrust = 0;
         this.monkey.static();
         this.missionP.update(this.context);
         if (this.fuel.fuelHealth > 0) {
@@ -142,23 +142,29 @@ let game = new Game(context);
 
 // }
 
-document.addEventListener("keydown", function (e) {
-  if (e.key === "ArrowUp") {
-    game.monkey.up();
-    game.fuel.decreaseFuel();
+document.addEventListener('keydown',function(e){
+  if(e.key === 'ArrowUp'){
+     // game.monkey.up()
+      uppressed = true;
   }
-  if (e.key === "ArrowRight") {
-    game.monkey.right();
-    game.fuel.decreaseFuel();
+  if(e.key === 'ArrowRight'){
+     // game.monkey.right()
+      game.fuel.decreaseFuel()
+      rightpressed = true;
   }
-  if (e.key === "ArrowLeft") {
-    game.monkey.left();
-    game.fuel.decreaseFuel();
+  if(e.key === 'ArrowLeft'){
+      //game.monkey.left()
+      game.fuel.decreaseFuel()
+      leftpressed = true;
   }
-});
+})
+
 
 document.onkeyup = function (e) {
-  game.monkey.static();
+  game.monkey.static()
+  leftpressed = false; 
+  rightpressed = false; 
+  uppressed = false;
 };
 
 function gameOn() {
