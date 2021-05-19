@@ -15,35 +15,28 @@ class Monkey{
         this.sX = 0;
         this.sY = 0
         // this.tick = 0;
-        this.staticMonkeyX = 0
-        this.staticMonkeyY = 0
+
         this.monkeyImage = new Image();
         this.monkeyImage.src = 'images/monkey.png' 
         this.x = 50
         this.y = 50
         this.gravitySpeed = 0;
-        this.gravity = 0.0098;
+        this.gravity = 0.01;
         this.landingClock = 0
 
-       // this.xLeftSpeed = 0
-        //this.xRightSpeed = 0
-
-        this.xGravity = 0.15
-        this.xRightGravity = 0.15
-
-        this.translateDegree = 0
-        this.downThrust = -0.12
+        // this.translateDegree = 0
         }
   
     update(ctx){
+        console.log(this.landingClock)
         ctx.drawImage(this.monkeyImage,this.sX,this.sY,this.width,this.height,this.x,this.y,this.width,this.height);    
         if(!this.canPlay)
         return
         this.landingClock += 1
-        this.y += this.gravitySpeed+this.verticalSpeed;
+        this.y += this.gravitySpeed + this.verticalSpeed;
         this.gravitySpeed += this.gravity;    
 
-                
+        //vertical        
         if(uppressed)
             this.up();
         else{
@@ -53,7 +46,6 @@ class Monkey{
         }
 
         //horizontal
-
         this.x += this.horizontalSpeed * this.movementFactor;
 
         if(rightpressed){
