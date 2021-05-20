@@ -15,15 +15,15 @@ class LandingSpace{
 
     landingCollision(rect1, rect2) {
         if (
-          rect1.x < rect2.x + rect2.width &&
-          rect1.x + rect1.width > rect2.x &&
-          rect1.y < rect2.y + rect2.height &&
-          rect1.y + rect1.height > rect2.y
+          rect1.position[game.level].x < rect2.x + rect2.width &&
+          rect1.position[game.level].x + rect1.width > rect2.x &&
+          rect1.position[game.level].y < rect2.y + rect2.height &&
+          rect1.position[game.level].y + rect1.height > rect2.y
         ) {
           if (
             game.monkey.landingClock < 20 &&
-            rect2.x + rect1.width - 28.9 < rect1.x + rect1.width &&
-            rect2.x + rect2.width > rect1.x + rect1.width - 30.24
+            rect2.x + rect1.width - 28.9 < rect1.position[game.level].x + rect1.width &&
+            rect2.x + rect2.width > rect1.position[game.level].x + rect1.width - 30.24
           ) {
             //timer ON
             this.timer += 1
@@ -36,6 +36,12 @@ class LandingSpace{
               if (game.fuel.fuelHealth > 0) {
                 score += 1;
                 game.fuel.decreaseFuel();
+              }else{
+                game.level +=1
+                game.monkey.canPlay = true
+                game.fuel.fuelHealth = 300
+                game.monkey.verticalSpeedFactor = 0.05
+                game.monkey.horizontalSpeedFactor = 0.2
               }
             }
           } else {

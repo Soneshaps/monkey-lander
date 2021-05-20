@@ -20,11 +20,11 @@ class Game {
       this.gameClock += 1;
       this.background.update(this.context);
       this.monkeyLife.update(this.context);
+      this.score.update(this.context);
       this.fuel.update(this.context);
       this.bananaLeft.update(this.context);
       this.banana.update(this.context);
       this.monkey.update(this.context);
-      this.score.update(this.context);
 
       this.checkBorderCollision();
       this.banana.bananaCollision(this.monkey, this.banana);
@@ -38,32 +38,33 @@ class Game {
         this.landingSpace.landingCollision(this.monkey, this.landingSpace);
       }
     }
-    if (this.state === 2) {
-      this.background.update(this.context);
-    }
+    // if (this.state === 2) {
+    //   this.background.update(this.context);
+    // }
   }
   // gameOver(){
 
   // }
   checkBorderCollision() {
     if (
-      this.monkey.y < -80 ||
-      this.monkey.y > 520 ||
-      this.monkey.x < -130 ||
-      this.monkey.x > 935
+      this.monkey.position[this.level].y < -80 ||
+      this.monkey.position[this.level].y > 520 ||
+      this.monkey.position[this.level].x < -130 ||
+      this.monkey.position[this.level].x > 935
     ) {
-
       this.dead();
     }
   }
 
   checkPoint() {
-    this.monkey.y = 200;
-    this.monkey.x = 200;
+    this.monkey.position[this.level].y = this.monkey.checkpoint[this.level].y
+    this.monkey.position[this.level].x  = this.monkey.checkpoint[this.level].x
     this.fuel.fuelHealth = 300;
     this.monkey.gravitySpeed = 0;
     this.monkey.horizontalSpeed = 0;
     this.monkey.verticalSpeed = 0;
+    this.monkey.verticalSpeedFactor = 0.05
+    this.monkey.horizontalSpeedFactor = 0.2
   }
 
   dead() {

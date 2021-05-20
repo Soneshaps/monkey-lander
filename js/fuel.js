@@ -37,18 +37,15 @@ class Fuel {
     ctx.strokeText("COCONUT FUEL", 770, 90);
     ctx.fillText("COCONUT FUEL", 770, 90);
 
-    if (this.fuelHealth < 0) {
-      game.monkey.downThrust = 0;
-      game.monkey.xGravity = 0;
-      game.monkey.xRightGravity = 0;
-      game.monkey.xLeftSpeed = 0;
-      game.monkey.xRightSpeed = 0;
+    if (this.fuelHealth < 1) {
+      game.monkey.verticalSpeedFactor = 0 
+      game.monkey.horizontalSpeedFactor = 0
     }
   }
 
   decreaseFuel() {
     if (this.fuelHealth > 0) {
-      this.fuelHealth -= 0.5;
+      this.fuelHealth -= 1;
     }
   }
 }

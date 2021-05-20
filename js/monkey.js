@@ -18,8 +18,12 @@ class Monkey{
 
         this.monkeyImage = new Image();
         this.monkeyImage.src = 'images/monkey.png' 
-        this.x = 50
-        this.y = 50
+        this.position = [
+            {x:90,y:90},{x:100,y:100}
+        ]
+        this.checkpoint = [
+            {x:90,y:90},{x:100,y:100}
+        ]
         this.gravitySpeed = 0;
         this.gravity = 0.01;
         this.landingClock = 0
@@ -28,12 +32,11 @@ class Monkey{
         }
   
     update(ctx){
-        console.log(this.landingClock)
-        ctx.drawImage(this.monkeyImage,this.sX,this.sY,this.width,this.height,this.x,this.y,this.width,this.height);    
+        ctx.drawImage(this.monkeyImage,this.sX,this.sY,this.width,this.height,this.position[game.level].x,this.position[game.level].y,this.width,this.height);    
         if(!this.canPlay)
         return
         this.landingClock += 1
-        this.y += this.gravitySpeed + this.verticalSpeed;
+        this.position[game.level].y += this.gravitySpeed + this.verticalSpeed;
         this.gravitySpeed += this.gravity;    
 
         //vertical        
@@ -46,7 +49,7 @@ class Monkey{
         }
 
         //horizontal
-        this.x += this.horizontalSpeed * this.movementFactor;
+        this.position[game.level].x += this.horizontalSpeed * this.movementFactor;
 
         if(rightpressed){
             this.right();
