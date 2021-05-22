@@ -32,7 +32,35 @@ class Monkey{
         }
   
     update(ctx){
+        //Monkey Polygon
+        ctx.beginPath()
+        ctx.moveTo(this.position[game.level].x + 100,this.position[game.level].y)
+        ctx.lineTo(this.position[game.level].x + 130,this.position[game.level].y + 7)
+        ctx.lineTo(this.position[game.level].x + 145,this.position[game.level].y + 33)
+        ctx.lineTo(this.position[game.level].x + 173 ,this.position[game.level].y + 52)
+        ctx.lineTo(this.position[game.level].x + 175 ,this.position[game.level].y + 75)
+        ctx.lineTo(this.position[game.level].x + 160 ,this.position[game.level].y + 78)
+        ctx.lineTo(this.position[game.level].x + 160 ,this.position[game.level].y + 78)
+        ctx.lineTo(this.position[game.level].x + 165 ,this.position[game.level].y + 98)
+        ctx.lineTo(this.position[game.level].x + 132 ,this.position[game.level].y + 108)
+        ctx.lineTo(this.position[game.level].x + 125 ,this.position[game.level].y + 90)
+        ctx.lineTo(this.position[game.level].x + 60 ,this.position[game.level].y + 90)
+        ctx.lineTo(this.position[game.level].x + 57 ,this.position[game.level].y + 108)
+        ctx.lineTo(this.position[game.level].x + 27 ,this.position[game.level].y + 95)
+        ctx.lineTo(this.position[game.level].x + 30 ,this.position[game.level].y + 77)
+        ctx.lineTo(this.position[game.level].x + 17 ,this.position[game.level].y + 70)
+        ctx.lineTo(this.position[game.level].x + 15 ,this.position[game.level].y + 55)
+        ctx.lineTo(this.position[game.level].x + 30 ,this.position[game.level].y + 35)
+        ctx.lineTo(this.position[game.level].x + 52 ,this.position[game.level].y + 27)
+        ctx.lineTo(this.position[game.level].x + 60 ,this.position[game.level].y + 10)
+        ctx.lineTo(this.position[game.level].x + 75 ,this.position[game.level].y + 2)
+        ctx.lineTo(this.position[game.level].x + 100 ,this.position[game.level].y )
+        ctx.stroke()
+        ctx.closePath()
+
+        //Image
         ctx.drawImage(this.monkeyImage,this.sX,this.sY,this.width,this.height,this.position[game.level].x,this.position[game.level].y,this.width,this.height);    
+        //If can Play is true -> gravity and thrust controls 
         if(!this.canPlay)
         return
         this.landingClock += 1
@@ -88,5 +116,108 @@ class Monkey{
         this.horizontalSpeed +=  this.horizontalSpeedFactor;
         this.sY = 253.4
     }
-    
+
+    monkeyPoly(){
+        var points = [
+            {x:this.position[game.level].x+100 , y:this.position[game.level].y},
+            {x:this.position[game.level].x+130 , y:this.position[game.level].y+7},
+            {x:this.position[game.level].x+145 , y:this.position[game.level].y+33},
+            {x:this.position[game.level].x+173 , y:this.position[game.level].y+52},
+            {x:this.position[game.level].x+175 , y:this.position[game.level].y+75},
+            {x:this.position[game.level].x+160 , y:this.position[game.level].y+78},
+            {x:this.position[game.level].x+165 , y:this.position[game.level].y+98},
+            {x:this.position[game.level].x+132 , y:this.position[game.level].y+108},
+            {x:this.position[game.level].x+125 , y:this.position[game.level].y+90},
+            {x:this.position[game.level].x+60 , y:this.position[game.level].y+90},
+            {x:this.position[game.level].x+57 , y:this.position[game.level].y+108},
+            {x:this.position[game.level].x+27 , y:this.position[game.level].y+95},
+            {x:this.position[game.level].x+30 , y:this.position[game.level].y+77},
+            {x:this.position[game.level].x+17 , y:this.position[game.level].y+70},
+            {x:this.position[game.level].x+15 , y:this.position[game.level].y+55},
+            {x:this.position[game.level].x+30 , y:this.position[game.level].y+35},
+            {x:this.position[game.level].x+52 , y:this.position[game.level].y+27},
+            {x:this.position[game.level].x+60 , y:this.position[game.level].y+10},
+            {x:this.position[game.level].x+72 , y:this.position[game.level].y+2},
+          ]
+        var sides = [
+            [
+              {x:this.position[game.level].x+100 , y:this.position[game.level].y},
+              {x:this.position[game.level].x+130 , y:this.position[game.level].y+7}
+            ],
+            [
+              {x:this.position[game.level].x+130 , y:this.position[game.level].y+7},
+              {x:this.position[game.level].x+145 , y:this.position[game.level].y+33}
+            ],
+            [
+              {x:this.position[game.level].x+145 , y:this.position[game.level].y+33},
+              {x:this.position[game.level].x+173 , y:this.position[game.level].y+52}
+            ],
+            [
+              {x:this.position[game.level].x+173 , y:this.position[game.level].y+52},
+              {x:this.position[game.level].x+175 , y:this.position[game.level].y+75}
+            ],
+            [
+              {x:this.position[game.level].x+175 , y:this.position[game.level].y+75},
+              {x:this.position[game.level].x+160 , y:this.position[game.level].y+78}
+            ],
+            [
+              {x:this.position[game.level].x+160 , y:this.position[game.level].y+78},
+              {x:this.position[game.level].x+165 , y:this.position[game.level].y+98}
+            ],
+            [
+              {x:this.position[game.level].x+165 , y:this.position[game.level].y+98},
+              {x:this.position[game.level].x+132 , y:this.position[game.level].y+108}
+            ],
+            [
+              {x:this.position[game.level].x+132 , y:this.position[game.level].y+108},
+              {x:this.position[game.level].x+125 , y:this.position[game.level].y+90}
+            ],
+            [
+              {x:this.position[game.level].x+125 , y:this.position[game.level].y+90},
+              {x:this.position[game.level].x+60 , y:this.position[game.level].y+90}
+            ],
+            [
+              {x:this.position[game.level].x+60 , y:this.position[game.level].y+90},
+              {x:this.position[game.level].x+57 , y:this.position[game.level].y+108}
+            ],
+            [
+              {x:this.position[game.level].x+57 , y:this.position[game.level].y+108},
+              {x:this.position[game.level].x+27 , y:this.position[game.level].y+95}
+            ],
+            [
+              {x:this.position[game.level].x+27 , y:this.position[game.level].y+95},
+              {x:this.position[game.level].x+30 , y:this.position[game.level].y+77}
+            ],
+            [
+              {x:this.position[game.level].x+30 , y:this.position[game.level].y+77},
+              {x:this.position[game.level].x+17 , y:this.position[game.level].y+70}
+            ],
+            [
+              {x:this.position[game.level].x+17 , y:this.position[game.level].y+70},
+              {x:this.position[game.level].x+15 , y:this.position[game.level].y+55}
+            ],
+            [
+              {x:this.position[game.level].x+15 , y:this.position[game.level].y+55},
+              {x:this.position[game.level].x+30 , y:this.position[game.level].y+35}
+            ],
+            [
+              {x:this.position[game.level].x+30 , y:this.position[game.level].y+35},
+              {x:this.position[game.level].x+52 , y:this.position[game.level].y+27}
+            ],
+            [
+              {x:this.position[game.level].x+52 , y:this.position[game.level].y+27},
+              {x:this.position[game.level].x+60 , y:this.position[game.level].y+10}
+            ],
+            [
+              {x:this.position[game.level].x+60 , y:this.position[game.level].y+10},
+              {x:this.position[game.level].x+72 , y:this.position[game.level].y+2}
+            ],
+            [
+              {x:this.position[game.level].x+72 , y:this.position[game.level].y+2},
+              {x:this.position[game.level].x+100 , y:this.position[game.level].y}
+            ],
+          ]
+          return  {p:points, s:sides};
+    }
+
 }

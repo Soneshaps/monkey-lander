@@ -38,10 +38,14 @@ class LandingSpace{
                 game.fuel.decreaseFuel();
               }else{
                 game.level +=1
-                game.monkey.canPlay = true
                 game.fuel.fuelHealth = 300
                 game.monkey.verticalSpeedFactor = 0.05
                 game.monkey.horizontalSpeedFactor = 0.2
+                game.monkey.horizontalSpeed = 0;
+                game.monkey.verticalSpeed = 0;
+                game.monkey.gravitySpeed = 0;
+                game.monkey.canPlay = true
+                this.timer = 0  
               }
             }
           } else {

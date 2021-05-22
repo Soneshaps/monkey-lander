@@ -10,6 +10,11 @@ class Game {
     this.bananaLeft = new BananaLeft();
     this.score = new Score();
     this.missionP = new MissionP();
+    this.collision = new Collision();
+    this.cliffLeft = new CliffLeft()
+    this.cliffRight = new CliffRight()
+
+    // this.test = new Test();
     this.level = 0;
     this.state = 1;
     this.gameClock = 0;
@@ -25,6 +30,11 @@ class Game {
       this.bananaLeft.update(this.context);
       this.banana.update(this.context);
       this.monkey.update(this.context);
+      if(this.level === 1){
+      this.cliffLeft.update(this.context)
+      this.cliffRight.update(this.context)
+      }
+
 
       this.checkBorderCollision();
       this.banana.bananaCollision(this.monkey, this.banana);
@@ -111,3 +121,5 @@ function gameOn() {
   requestAnimationFrame(gameOn);
 }
 gameOn();
+
+console.log(game.cliffRight.cliffRightPoly())
