@@ -8,7 +8,10 @@ class Banana{
             ],
             [
                 {x:100,y:250},{x:500,y:150}
-            ]   
+            ] ,  
+            [
+              {x:100,y:250},{x:500,y:150}
+          ]   
         ]
         
         this.animationPositionList = [

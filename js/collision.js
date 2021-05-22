@@ -24,5 +24,13 @@ class Collision{
                   ((s2[1].x - s2[0].x)*(s1[0].y - s1[1].y) - (s1[0].x - s1[1].x)*(s2[1].y - s2[0].y));
         return [tA, tB];
     }
+
+    pointToSide(points){
+      var sides = []
+      for (let i = 0; i < points.length-1 ; i++) {
+        sides.push([{x : points[i].x , y: points[i].y},{x : points[i+1].x , y: points[i+1].y}])
+      }
+      return sides
+    }
       
 }

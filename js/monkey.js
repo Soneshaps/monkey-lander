@@ -19,10 +19,10 @@ class Monkey{
         this.monkeyImage = new Image();
         this.monkeyImage.src = 'images/monkey.png' 
         this.position = [
-            {x:90,y:90},{x:100,y:100}
+            {x:90,y:90},{x:250,y:50}
         ]
         this.checkpoint = [
-            {x:90,y:90},{x:100,y:100}
+            {x:90,y:90},{x:250,y:100}
         ]
         this.gravitySpeed = 0;
         this.gravity = 0.01;
@@ -139,85 +139,13 @@ class Monkey{
             {x:this.position[game.level].x+60 , y:this.position[game.level].y+10},
             {x:this.position[game.level].x+72 , y:this.position[game.level].y+2},
           ]
-        var sides = [
-            [
-              {x:this.position[game.level].x+100 , y:this.position[game.level].y},
-              {x:this.position[game.level].x+130 , y:this.position[game.level].y+7}
-            ],
-            [
-              {x:this.position[game.level].x+130 , y:this.position[game.level].y+7},
-              {x:this.position[game.level].x+145 , y:this.position[game.level].y+33}
-            ],
-            [
-              {x:this.position[game.level].x+145 , y:this.position[game.level].y+33},
-              {x:this.position[game.level].x+173 , y:this.position[game.level].y+52}
-            ],
-            [
-              {x:this.position[game.level].x+173 , y:this.position[game.level].y+52},
-              {x:this.position[game.level].x+175 , y:this.position[game.level].y+75}
-            ],
-            [
-              {x:this.position[game.level].x+175 , y:this.position[game.level].y+75},
-              {x:this.position[game.level].x+160 , y:this.position[game.level].y+78}
-            ],
-            [
-              {x:this.position[game.level].x+160 , y:this.position[game.level].y+78},
-              {x:this.position[game.level].x+165 , y:this.position[game.level].y+98}
-            ],
-            [
-              {x:this.position[game.level].x+165 , y:this.position[game.level].y+98},
-              {x:this.position[game.level].x+132 , y:this.position[game.level].y+108}
-            ],
-            [
-              {x:this.position[game.level].x+132 , y:this.position[game.level].y+108},
-              {x:this.position[game.level].x+125 , y:this.position[game.level].y+90}
-            ],
-            [
-              {x:this.position[game.level].x+125 , y:this.position[game.level].y+90},
-              {x:this.position[game.level].x+60 , y:this.position[game.level].y+90}
-            ],
-            [
-              {x:this.position[game.level].x+60 , y:this.position[game.level].y+90},
-              {x:this.position[game.level].x+57 , y:this.position[game.level].y+108}
-            ],
-            [
-              {x:this.position[game.level].x+57 , y:this.position[game.level].y+108},
-              {x:this.position[game.level].x+27 , y:this.position[game.level].y+95}
-            ],
-            [
-              {x:this.position[game.level].x+27 , y:this.position[game.level].y+95},
-              {x:this.position[game.level].x+30 , y:this.position[game.level].y+77}
-            ],
-            [
-              {x:this.position[game.level].x+30 , y:this.position[game.level].y+77},
-              {x:this.position[game.level].x+17 , y:this.position[game.level].y+70}
-            ],
-            [
-              {x:this.position[game.level].x+17 , y:this.position[game.level].y+70},
-              {x:this.position[game.level].x+15 , y:this.position[game.level].y+55}
-            ],
-            [
-              {x:this.position[game.level].x+15 , y:this.position[game.level].y+55},
-              {x:this.position[game.level].x+30 , y:this.position[game.level].y+35}
-            ],
-            [
-              {x:this.position[game.level].x+30 , y:this.position[game.level].y+35},
-              {x:this.position[game.level].x+52 , y:this.position[game.level].y+27}
-            ],
-            [
-              {x:this.position[game.level].x+52 , y:this.position[game.level].y+27},
-              {x:this.position[game.level].x+60 , y:this.position[game.level].y+10}
-            ],
-            [
-              {x:this.position[game.level].x+60 , y:this.position[game.level].y+10},
-              {x:this.position[game.level].x+72 , y:this.position[game.level].y+2}
-            ],
-            [
-              {x:this.position[game.level].x+72 , y:this.position[game.level].y+2},
-              {x:this.position[game.level].x+100 , y:this.position[game.level].y}
-            ],
-          ]
-          return  {p:points, s:sides};
+          var sides = []
+          for (let i = 0; i < points.length-1 ; i++) {
+            sides.push([{x : points[i].x , y: points[i].y},{x : points[i+1].x , y: points[i+1].y}])
+          }
+          points.pop()
+  
+          return {p:points,s:sides}
     }
 
 }

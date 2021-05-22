@@ -13,6 +13,11 @@ class Game {
     this.collision = new Collision();
     this.cliffLeft = new CliffLeft()
     this.cliffRight = new CliffRight()
+    this.coconutTree = new CoconutTree()
+    this.headOnSpike = new HeadOnSpike()
+    this.bigCliff = new BigCliff()
+    this.rope = new Rope()
+    this.ropeReversed = new RopeR()
 
     // this.test = new Test();
     this.level = 0;
@@ -29,13 +34,19 @@ class Game {
       this.fuel.update(this.context);
       this.bananaLeft.update(this.context);
       this.banana.update(this.context);
+      this.ropeReversed.update(this.context)
       this.monkey.update(this.context);
-      if(this.level === 1){
-      this.cliffLeft.update(this.context)
-      this.cliffRight.update(this.context)
-      }
+      // this.bigCliff.update(this.context)
+      // this.coconutTree.update(this.context)
+      // if(this.level === 1){
+      //   this.cliffLeft.update(this.context)
+      //   this.cliffRight.update(this.context)
+      // }
+      // if(this.level === 2){
+      //   this.headOnSpike.update(this.context)
+      //   this.coconutTree.update(this.context)
 
-
+      // }
       this.checkBorderCollision();
       this.banana.bananaCollision(this.monkey, this.banana);
 
@@ -122,4 +133,4 @@ function gameOn() {
 }
 gameOn();
 
-console.log(game.cliffRight.cliffRightPoly())
+console.log(game.headOnSpike.headOnSpikePoly())
