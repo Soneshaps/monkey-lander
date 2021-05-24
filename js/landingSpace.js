@@ -23,7 +23,7 @@ class LandingSpace{
           rect1.position[game.level].y + rect1.height > rect2.position[game.level].y
         ) {
           if (
-            game.monkey.landingClock < 20 &&
+            game.monkey.landingClock < 15 &&
             rect2.position[game.level].x + rect1.width - 28.9 < rect1.position[game.level].x + rect1.width &&
             rect2.position[game.level].x + rect2.width > rect1.position[game.level].x + rect1.width - 30.24
           ) {
