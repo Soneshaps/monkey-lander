@@ -7,16 +7,52 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>  
-    <canvas id="canvas"></canvas>
+<body>
+    <div>
+        <div id="menu">
+           <div id="menu-area">
+                <button class="button" id="play">PLAY !</button>
+                <button class="button" id="level">LEVELS</button>
+                <button class="button" id="how">HOW TO PLAY</button>
+           </div>     
+           <div id="level-area">
+                <h1 class="header">LEVELS</h1>
+                <div class="level-wrapper">
+                    <div id="level-one" class="level-item" onclick="levelOne()"></div>
+                    <div id="level-two" class="level-item" onclick="levelTwo()"></div>
+                    <div id="level-three" class="level-item" onclick="levelThree()"></div>
+                    <div id="level-four" class="level-item" onclick="levelFour()"></div>
+                    <div id="level-five" class="level-item" onclick="levelFive()"></div>
+                </div>
+                <button id="back-button" class="button" onclick="backButton()">BACK</button>
+           </div>
+
+        </div>
+        <canvas id="canvas"></canvas>
+    </div>  
+    
+
 </body>
 <script src="js/canvas.js"></script>
 <script src="js/background.js"></script>
 <script src="js/monkeyLife.js"></script>
 <script src="js/fuel.js"></script>
 <script src="js/banana.js"></script>
+<script src="js/bananaLeft.js"></script>
+<script src="js/score.js"></script>
 <script src="js/monkey.js"></script>
 <script src="js/landingSpace.js"></script>
+<script src="js/missionP.js"></script>
+<script src="js/collision.js"></script>
+<script src="js/cliffLeft.js"></script>
+<script src="js/cliffRight.js"></script>
+<script src="js/coconutTree.js"></script>
+<script src="js/headOnSpike.js"></script>
+<script src="js/bigCliff.js"></script>
+<script src="js/rope.js"></script>
+<script src="js/ropeR.js"></script>
+<script src="js/hover.js"></script>
+<script src="js/gameover.js"></script>
 <script src="js/game.js"></script>
 
 </html>

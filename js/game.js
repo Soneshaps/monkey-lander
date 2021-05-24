@@ -1,144 +1,156 @@
-class Game{
-    constructor(context){
-        this.context = context
-        this.background = new Background()
-        this.monkeyLife = new MonkeyLife()
-        this.fuel = new Fuel()
-        this.monkey = new Monkey() 
-        this.landingSpace = new LandingSpace()
-        this.banana = new Banana()
-        this.level = 0
-        this.state = 1
-    }
-    update(){
-        if(this.state === 1){
-            this.background.update(this.context)
-            this.monkeyLife.update(this.context)
-            this.fuel.update(this.context)
-            this.banana.update(this.context)
-            this.monkey.update(this.context)
-            this.checkBorderCollision()
+class Game {
+  constructor(context) {
+    this.context = context;
+    this.background = new Background();
+    this.monkeyLife = new MonkeyLife();
+    this.fuel = new Fuel();
+    this.monkey = new Monkey();
+    this.landingSpace = new LandingSpace();
+    this.banana = new Banana();
+    this.bananaLeft = new BananaLeft();
+    this.score = new Score();
+    this.missionP = new MissionP();
+    this.collision = new Collision();
+    this.cliffLeft = new CliffLeft()
+    this.cliffRight = new CliffRight()
+    this.coconutTree = new CoconutTree()
+    this.headOnSpike = new HeadOnSpike()
+    this.bigCliff = new BigCliff()
+    this.rope = new Rope()
+    this.ropeReversed = new RopeR()
+    this.gameover = new GameOver()
 
-            //after collecting all bananas
-            this.landingSpace.update(this.context)
-            landingCollision(this.monkey,this.landingSpace)
-            bananaCollision(this.monkey,this.banana)
-        }
-        if(this.state === 2){
-            this.background.update(this.context)
-   
-        }
+    this.level = 0;
+    this.state = 0;
+    this.gameClock = 0;
+
+  }
+  update() {
+    if (this.state === 1) {
+      canvas.style.display = 'block'
+      this.gameClock += 1;
+      this.background.update(this.context);
+      this.monkeyLife.update(this.context);
+      this.score.update(this.context);
+      this.fuel.update(this.context);
+      this.bananaLeft.update(this.context);
+      this.banana.update(this.context);
+      this.monkey.update(this.context);
+
+      if(this.level === 1){
+        this.cliffLeft.update(this.context)
+        this.cliffRight.update(this.context)
+      }
+      if(this.level === 2){
+        this.ropeReversed.update(this.context)
+        this.headOnSpike.update(this.context)
+        this.coconutTree.update(this.context)
+      }
+      if(this.level===3){
+        this.bigCliff.update(this.context)
+        this.rope.update(this.context)
+        this.coconutTree.update(this.context)
+      }
+      this.checkBorderCollision();
+      this.banana.bananaCollision(this.monkey, this.banana);
+
+      if (this.gameClock % 10 === 0) {
+        this.banana.hang();
+      }
+      //after collecting all bananas
+  
+
+      if (game.banana.bananaLeftToCollect === 0) {
+        this.landingSpace.update(this.context);
+        this.landingSpace.landingCollision(this.monkey, this.landingSpace);
+      }
     }
-    // gameOver(){
-     
+    // if (this.state === 2) {
+    //   this.background.update(this.context);
     // }
-    checkBorderCollision(){
-        if(this.monkey.y < -80 || this.monkey.y > 520 || this.monkey.x < -130 || this.monkey.x > 935){
-            this.monkey.xLeftSpeed = 0
-            this.monkey.xRightSpeed = 0
-            this.monkey.gravitySpeed = 0
-            this.dead()
-        }
+  }
+  mainMenu(){
+    if(this.state === 0){
+      menuDiv.style.display = 'block'
+      canvas.style.display = 'none'
     }
-    checkPoint(){
-        this.monkey.y = 200
-        this.monkey.x = 200
-        this.fuel.fuelHealth = 228
-        this.monkey.downThrust = -0.12
-        this.monkey.xGravity = 0.12
-        this.monkey.xRightGravity = 0.12
+  }
+  gameOver(){
+    if(this.state ===2){
+      this.gameover.update(this.context)
     }
+  }
+  checkBorderCollision() {
+    if (
+      this.monkey.position[this.level].y < -80 ||
+      this.monkey.position[this.level].y > 520 ||
+      this.monkey.position[this.level].x < -130 ||
+      this.monkey.position[this.level].x > 935
+    ) {
+      this.dead();
+    }
+  }
 
-    dead(){
-        if(this.monkeyLife.monkeyLeft > 0){
-            this.monkeyLife.monkeyLeft -= 1
-            this.checkPoint()
-        }else{
-            setTimeout(function(){
-                this.state = 2
-            }, 100).bind(this) //problem 
-        }
-    }
+  checkPoint() {
+    this.monkey.position[this.level].y = this.monkey.checkpoint[this.level].y
+    this.monkey.position[this.level].x  = this.monkey.checkpoint[this.level].x
+    this.fuel.fuelHealth = 300;
+    this.monkey.gravitySpeed = 0;
+    this.monkey.horizontalSpeed = 0;
+    this.monkey.verticalSpeed = 0;
+    this.monkey.verticalSpeedFactor = 0.05
+    this.monkey.horizontalSpeedFactor = 0.2
+  }
 
-    fuelZero(){
-        // this.
+  dead() {
+    if (this.monkeyLife.monkeyLeft > 0) {
+      this.monkeyLife.monkeyLeft -= 1;
+      this.checkPoint();
+    }else{
+      this.state = 2
     }
+  }
+
 
 }
 
-let game = new Game(context)
+let game = new Game(context);
 
-// function respawnCondition(){
-    
-// }
-
-function landingCollision(rect1,rect2){
-    if (rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.width > rect2.x &&
-        rect1.y < rect2.y + rect2.height &&
-        rect1.y + rect1.height > rect2.y) {
-         if(game.monkey.landingClock < 50 && (rect2.x + rect1.width - 28.9) < (rect1.x + rect1.width) && (rect2.x + rect2.width) > (rect1.x + rect1.width - 30.24)){
-             //Stopping the gravity and speed 
-            game.monkey.gravitySpeed = 0;
-            game.monkey.gravity = 0;
-            game.monkey.landingClock = 0
-            game.monkey.xLeftSpeed = 0
-            game.monkey.xRightSpeed = 0
-            game.monkey.xGravity = 0
-            game.monkey.xRightGravity = 0
-            game.monkey.downThrust = 0
-
-            
-            game.monkey.static()
-
-            
-        }else{
-             game.dead()
-         }
-     }         
-}
-
-function bananaCollision(rect1,rect2){
-    for (let index = 0; index < game.banana.position[game.level].length; index++) {
-        // console.log(rect2.position[game.level][index].y)
-        if (rect1.x < rect2.position[game.level][index].x + rect2.width &&
-            rect1.x + rect1.width > rect2.position[game.level][index].x &&
-            rect1.y < rect2.position[game.level][index].y + rect2.height &&
-            rect1.y + rect1.height > rect2.position[game.level][index].y) {
-                console.log('kera khayo !')
-            } 
-    }        
-}
 
 document.addEventListener('keydown',function(e){
-    if(e.key === 'ArrowUp'){
-        game.monkey.up()
-        game.fuel.decreaseFuel()
-    }
-    if(e.key === 'ArrowRight'){
-        game.monkey.right()
-        game.fuel.decreaseFuel()
+  if(e.key === 'ArrowUp'){
+    game.fuel.decreaseFuel()
+      uppressed = true;
+  }
+  if(e.key === 'ArrowRight'){
+      game.fuel.decreaseFuel()
+      rightpressed = true;
+  }
+  if(e.key === 'ArrowLeft'){
+      game.fuel.decreaseFuel()
+      leftpressed = true;
+  }
+})
 
-    }
-    if(e.key === 'ArrowLeft'){
-        game.monkey.left()
-        game.fuel.decreaseFuel()
-    }
+
+playButton.addEventListener('click',function(){
+  game.state = 1
 })
 
 
 document.onkeyup = function (e) {
-    game.monkey.static()
+  game.monkey.static()
+  leftpressed = false;
+  rightpressed = false;
+  uppressed = false;
 };
 
-
-
-function gameOn(){
-    game.update()
-    // game.gameOver()
-    requestAnimationFrame(gameOn)
+function gameOn() {
+  game.update();
+  game.mainMenu()
+  game.gameOver()
+  requestAnimationFrame(gameOn);
 }
-gameOn()
+gameOn();
 
-
-console.log(game.banana.position[0].length)
+console.log(game.headOnSpike.headOnSpikePoly())
