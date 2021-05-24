@@ -31,6 +31,7 @@ class GameOver{
     ctx.strokeText(`YOU MANAGED GET`, this.lineSecondX,this.lineSecondY);
     ctx.fillText(`YOU MANAGED GET`, this.lineSecondX,this.lineSecondY);
 
+    
     ctx.font = "40px Nunito-ExtraBold";
     ctx.fillText(score, this.pointX,this.pointY);  
     

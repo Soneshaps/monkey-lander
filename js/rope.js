@@ -22,7 +22,6 @@ class Rope {
     ctx.lineTo(this.x+30,this.y+150)
     ctx.lineTo(this.x,this.y+172)
     ctx.lineTo(this.x,this.y)
-    ctx.stroke()
     ctx.closePath()
 
     if(game.collision.collide(game.monkey.monkeyPoly(),this.ropePoly())){
