@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
 @font-face {
     font-family: Nunito;
     src: url('../fonts/Nunito-Regular.ttf');
@@ -31,3 +31,175 @@ canvas{
     left: calc(50% - 496px);
 }
 
+#menu{
+    height: 530px;
+    width: 993px;
+    background: url('../images/menu1.png');
+    margin: 30px auto 0 auto;
+    position: relative;
+}
+
+
+
+.button{
+    font-family: Nunito-ExtraBold;
+    color: #666666;
+    height: 55px;
+    padding: 0 30px;
+    background-color: #ffffff;
+    font-size: 30px;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    border-radius: 15px;
+    border-left: 4px solid #000000;
+    border-right: 4px solid #000000;
+    cursor: pointer;
+}
+.button:hover{
+    color: #ff6600;
+}
+
+#play{
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+}
+#level{
+    position: absolute;
+    bottom: 85px;
+    right: 30px;
+}
+#how{
+    position: absolute;
+    bottom: 150px;
+    right: 30px;
+}
+
+#play:hover #menu{
+    background: url('../images/menu2.png');
+}
+
+#level-area{
+    height: 530px;
+    width: 993px;
+    background: url('../images/gameover-background.png');
+    display: none;
+}
+
+#menu-area{
+    /* display: none; */
+}
+
+h1{
+    font-size: 4em;
+    color: #ff6600;
+    font-family: Nunito-ExtraBold;
+}
+
+.header{
+    margin:30px 0 15px 30px;
+}
+
+.level-wrapper{
+    margin: 0 auto;
+    width: 940px;
+    height: 20px;
+    display: flex;
+    
+    flex-wrap: wrap;
+}
+
+.level-item{
+    height: 190px;
+    width: 270px;
+    background-color: #000000;
+    margin-right: 43px;
+    margin-bottom: 20px;
+    font-family: Nunito-ExtraBold;
+    font-size: 4em;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;  
+
+}
+
+
+
+.level-item::before{
+    content: '';
+    position: absolute;
+    height: 190px;
+    width: 270px;;
+    background-color: #000000; 
+    opacity: 30%;
+    line-height: 190px;
+    text-align: center;
+    border-radius: 5px;
+    color: #ff6600;
+}
+
+#level-one{
+    background: url('../images/level2.png'); 
+    background-size: cover;
+    
+}
+
+#level-one:hover:before{
+    content: '1';
+    opacity: 65%;
+    background-color: #ebebeb;
+}
+
+#level-two{
+    background: url('../images/level2.png'); 
+    background-size: cover;
+    
+}
+
+#level-two:hover:before{
+    content: '2';
+    opacity: 65%;
+    background-color: #ebebeb;
+}
+
+#level-three{
+    background: url('../images/level2.png'); 
+    background-size: cover;
+    
+}
+
+#level-three:hover:before{
+    content: '3';
+    opacity: 65%;
+    background-color: #ebebeb;
+}
+
+#level-four{
+    background: url('../images/level2.png'); 
+    background-size: cover;
+    
+}
+
+#level-four:hover:before{
+    content: '4';
+    opacity: 65%;
+    background-color: #ebebeb;
+}
+
+#level-five{
+    background: url('../images/level2.png'); 
+    background-size: cover;
+    
+}
+
+#level-five:hover:before{
+    content: '5';
+    opacity: 65%;
+    background-color: #ebebeb;
+}
+
+#back-button{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}

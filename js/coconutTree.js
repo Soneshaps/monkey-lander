@@ -3,7 +3,7 @@ class CoconutTree{
     this.image = new Image()
     this.image.src = 'images/coconut-tree.png'
     this.position = [
-      {x:480 ,y:140},{},{x:-70 ,y:100},{}
+      {},{},{x:-70 ,y:100},{x:480 ,y:140},{}
     ]
     this.sX = 0 
     this.sY = 0
@@ -59,9 +59,6 @@ class CoconutTree{
     ctx.lineTo(this.position[game.level].x+120  ,this.position[game.level].y+31)
     ctx.lineTo(this.position[game.level].x+113  ,this.position[game.level].y+10)
     ctx.lineTo(this.position[game.level].x+100  ,this.position[game.level].y)
-
-
-    ctx.stroke()
     ctx.closePath()
     if(game.collision.collide(game.monkey.monkeyPoly(),this.coconutPoly())){
       game.dead()

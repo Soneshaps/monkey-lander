@@ -58,7 +58,6 @@ class HeadOnSpike{
     ctx.lineTo(this.x+66,this.y+2)
     ctx.lineTo(this.x+75,this.y+8)
     ctx.lineTo(this.x+90,this.y)
-    ctx.stroke()
     ctx.closePath()
 
     if(game.collision.collide(game.monkey.monkeyPoly(),this.headOnSpikePoly())){

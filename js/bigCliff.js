@@ -28,7 +28,6 @@ class BigCliff{
     ctx.lineTo(this.x+99,this.y+219)
     ctx.lineTo(this.x,this.y+219)
     ctx.lineTo(this.x,this.y+2)
-    ctx.stroke()
     ctx.closePath()
 
     if(game.collision.collide(game.monkey.monkeyPoly(),this.cliffPoly())){

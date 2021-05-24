@@ -27,7 +27,6 @@ class CliffLeft{
         ctx.lineTo(this.x + 260 , this.y + 202)
         ctx.lineTo(this.x  , this.y + 202)
         ctx.lineTo(this.x  , this.y + 3)
-        ctx.stroke()
         ctx.closePath()
         if(game.collision.collide(game.monkey.monkeyPoly(),this.cliffPolygon())){
             game.dead()

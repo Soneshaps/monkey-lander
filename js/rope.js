@@ -6,8 +6,8 @@ class Rope {
     this.sY = 0 
     this.width = 157
     this.height = 172
-    this.x = 100
-    this.y = 100
+    this.x = -1
+    this.y = -1
   }
   update(ctx){
     ctx.drawImage(this.image,this.sX,this.sY,this.width,this.height,this.x,this.y,this.width,this.height);    
@@ -22,8 +22,6 @@ class Rope {
     ctx.lineTo(this.x+30,this.y+150)
     ctx.lineTo(this.x,this.y+172)
     ctx.lineTo(this.x,this.y)
-
-
     ctx.stroke()
     ctx.closePath()
 
@@ -39,7 +37,7 @@ class Rope {
       {x:this.x+130,y:this.y+50},
       {x:this.x+93,y:this.y+100},
       {x:this.x+30,y:this.y+150},
-      {x:this.x+147,y:this.y+172},
+      {x:this.x,y:this.y+172},
       {x:this.x,y:this.y},
     ]
 

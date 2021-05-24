@@ -19,10 +19,10 @@ class Monkey{
         this.monkeyImage = new Image();
         this.monkeyImage.src = 'images/monkey.png' 
         this.position = [
-            {x:90,y:90},{x:250,y:50}
+            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0}
         ]
         this.checkpoint = [
-            {x:90,y:90},{x:250,y:100}
+            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0}
         ]
         this.gravitySpeed = 0;
         this.gravity = 0.01;
@@ -55,7 +55,6 @@ class Monkey{
         ctx.lineTo(this.position[game.level].x + 60 ,this.position[game.level].y + 10)
         ctx.lineTo(this.position[game.level].x + 75 ,this.position[game.level].y + 2)
         ctx.lineTo(this.position[game.level].x + 100 ,this.position[game.level].y )
-        ctx.stroke()
         ctx.closePath()
 
         //Image

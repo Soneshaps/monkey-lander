@@ -18,15 +18,16 @@ class Game {
     this.bigCliff = new BigCliff()
     this.rope = new Rope()
     this.ropeReversed = new RopeR()
+    this.gameover = new GameOver()
 
-    // this.test = new Test();
     this.level = 0;
-    this.state = 1;
+    this.state = 0;
     this.gameClock = 0;
-  
+
   }
   update() {
     if (this.state === 1) {
+      canvas.style.display = 'block'
       this.gameClock += 1;
       this.background.update(this.context);
       this.monkeyLife.update(this.context);
@@ -34,19 +35,22 @@ class Game {
       this.fuel.update(this.context);
       this.bananaLeft.update(this.context);
       this.banana.update(this.context);
-      this.ropeReversed.update(this.context)
       this.monkey.update(this.context);
-      // this.bigCliff.update(this.context)
-      // this.coconutTree.update(this.context)
-      // if(this.level === 1){
-      //   this.cliffLeft.update(this.context)
-      //   this.cliffRight.update(this.context)
-      // }
-      // if(this.level === 2){
-      //   this.headOnSpike.update(this.context)
-      //   this.coconutTree.update(this.context)
 
-      // }
+      if(this.level === 1){
+        this.cliffLeft.update(this.context)
+        this.cliffRight.update(this.context)
+      }
+      if(this.level === 2){
+        this.ropeReversed.update(this.context)
+        this.headOnSpike.update(this.context)
+        this.coconutTree.update(this.context)
+      }
+      if(this.level===3){
+        this.bigCliff.update(this.context)
+        this.rope.update(this.context)
+        this.coconutTree.update(this.context)
+      }
       this.checkBorderCollision();
       this.banana.bananaCollision(this.monkey, this.banana);
 
@@ -54,6 +58,8 @@ class Game {
         this.banana.hang();
       }
       //after collecting all bananas
+  
+
       if (game.banana.bananaLeftToCollect === 0) {
         this.landingSpace.update(this.context);
         this.landingSpace.landingCollision(this.monkey, this.landingSpace);
@@ -63,9 +69,17 @@ class Game {
     //   this.background.update(this.context);
     // }
   }
-  // gameOver(){
-
-  // }
+  mainMenu(){
+    if(this.state === 0){
+      menuDiv.style.display = 'block'
+      canvas.style.display = 'none'
+    }
+  }
+  gameOver(){
+    if(this.state ===2){
+      this.gameover.update(this.context)
+    }
+  }
   checkBorderCollision() {
     if (
       this.monkey.position[this.level].y < -80 ||
@@ -119,16 +133,22 @@ document.addEventListener('keydown',function(e){
 })
 
 
+playButton.addEventListener('click',function(){
+  game.state = 1
+})
+
+
 document.onkeyup = function (e) {
   game.monkey.static()
-  leftpressed = false; 
-  rightpressed = false; 
+  leftpressed = false;
+  rightpressed = false;
   uppressed = false;
 };
 
 function gameOn() {
   game.update();
-  // game.gameOver()
+  game.mainMenu()
+  game.gameOver()
   requestAnimationFrame(gameOn);
 }
 gameOn();
