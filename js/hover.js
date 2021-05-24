@@ -6,32 +6,7 @@ let backButton = document.getElementById('back-button')
 let levelDiv = document.getElementById('level-area')
 let menuDiv = document.getElementById('menu')
 let menuArea = document.getElementById('menu-area')
-playButton.addEventListener('mouseover',function(){
-  menuDiv.style.background = "url('../images/menu2.png')";
 
-})
-playButton.addEventListener('mouseout',function(){
-  menuDiv.style.background = "url('../images/menu1.png')";
-
-})
-
-
-levelButton.addEventListener('mouseover',function(){
-  menuDiv.style.background = "url('../images/menu3.png')";
-
-})
-levelButton.addEventListener('mouseout',function(){
-  menuDiv.style.background = "url('../images/menu1.png')";
-
-})
-howButton.addEventListener('mouseover',function(){
-  menuDiv.style.background = "url('../images/menu4.png')";
-
-})
-howButton.addEventListener('mouseout',function(){
-  menuDiv.style.background = "url('../images/menu1.png')";
-
-})
 
 backButton.addEventListener('click',function(){
   levelDiv.style.display = 'none'
