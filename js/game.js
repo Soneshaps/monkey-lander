@@ -19,10 +19,12 @@ class Game {
     this.rope = new Rope()
     this.ropeReversed = new RopeR()
     this.gameover = new GameOver()
-
+    this.reset = new Reset()
+    this.fruit = new Fruit()
     this.level = 0;
     this.state = 0;
     this.gameClock = 0;
+    this.gameoverTimer = 0;
 
   }
   update() {
@@ -35,6 +37,7 @@ class Game {
       this.fuel.update(this.context);
       this.bananaLeft.update(this.context);
       this.banana.update(this.context);
+      this.fruit.update(this.context)
       this.monkey.update(this.context);
 
       if(this.level === 1){
@@ -52,7 +55,6 @@ class Game {
         this.coconutTree.update(this.context)
       }
       this.checkBorderCollision();
-      this.banana.bananaCollision(this.monkey, this.banana);
 
       if (this.gameClock % 10 === 0) {
         this.banana.hang();
@@ -77,7 +79,13 @@ class Game {
   }
   gameOver(){
     if(this.state ===2){
+      this.gameoverTimer += 1
       this.gameover.update(this.context)
+      if(this.gameoverTimer > 100){
+        this.state = 0
+        this.reset.update()
+        this.gameoverTimer = 0
+      }
     }
   }
   checkBorderCollision() {
@@ -129,6 +137,13 @@ document.addEventListener('keydown',function(e){
   if(e.key === 'ArrowLeft'){
       game.fuel.decreaseFuel()
       leftpressed = true;
+  }
+  if(e.keyCode === 80){
+    if(game.monkey.canPlay){
+      game.monkey.canPlay = false
+    }else{
+      game.monkey.canPlay = true
+    }
   }
 })
 
