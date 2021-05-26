@@ -21,6 +21,12 @@ class Game {
     this.gameover = new GameOver()
     this.reset = new Reset()
     this.fruit = new Fruit()
+    this.levelBuilder = new LevelBuilder()
+    this.headOnSpikeReverse = new HeadOnSpikeReverse()
+    this.rock = new Rock()
+    this.bigRock = new BigRock()
+
+
     this.level = 0;
     this.state = 0;
     this.gameClock = 0;
@@ -28,17 +34,13 @@ class Game {
 
   }
   update() {
+
     if (this.state === 1) {
       canvas.style.display = 'block'
       this.gameClock += 1;
       this.background.update(this.context);
-      this.monkeyLife.update(this.context);
-      this.score.update(this.context);
-      this.fuel.update(this.context);
-      this.bananaLeft.update(this.context);
-      this.banana.update(this.context);
       this.fruit.update(this.context)
-      this.monkey.update(this.context);
+      this.checkBorderCollision();
 
       if(this.level === 1){
         this.cliffLeft.update(this.context)
@@ -54,7 +56,19 @@ class Game {
         this.rope.update(this.context)
         this.coconutTree.update(this.context)
       }
-      this.checkBorderCollision();
+      if(this.level===4){
+        this.coconutTree.update(this.context)
+        this.headOnSpikeReverse.update(this.context)
+        this.rock.update(this.context)
+        this.bigRock.update(this.context)
+      }
+      this.monkeyLife.update(this.context);
+      this.fuel.update(this.context);
+      this.score.update(this.context);
+      this.banana.update(this.context);
+      this.bananaLeft.update(this.context);
+      this.monkey.update(this.context);
+
 
       if (this.gameClock % 10 === 0) {
         this.banana.hang();
@@ -67,14 +81,12 @@ class Game {
         this.landingSpace.landingCollision(this.monkey, this.landingSpace);
       }
     }
-    // if (this.state === 2) {
-    //   this.background.update(this.context);
-    // }
   }
   mainMenu(){
     if(this.state === 0){
       menuDiv.style.display = 'block'
       canvas.style.display = 'none'
+      this.level = 0 
     }
   }
   gameOver(){
@@ -88,7 +100,16 @@ class Game {
       }
     }
   }
-  checkBorderCollision() {
+  editor(){
+    if(this.state === 3){
+      this.level = 5
+      canvas.style.display = 'none'
+      canvas.style.display = 'block'
+      this.levelBuilder.update(this.context);
+
+    }
+  }
+  checkBorderCollision(){
     if (
       this.monkey.position[this.level].y < -80 ||
       this.monkey.position[this.level].y > 520 ||
@@ -99,7 +120,7 @@ class Game {
     }
   }
 
-  checkPoint() {
+  checkPoint(){
     this.monkey.position[this.level].y = this.monkey.checkpoint[this.level].y
     this.monkey.position[this.level].x  = this.monkey.checkpoint[this.level].x
     this.fuel.fuelHealth = 300;
@@ -110,7 +131,7 @@ class Game {
     this.monkey.horizontalSpeedFactor = 0.2
   }
 
-  dead() {
+  dead(){
     if (this.monkeyLife.monkeyLeft > 0) {
       this.monkeyLife.monkeyLeft -= 1;
       this.checkPoint();
@@ -123,7 +144,6 @@ class Game {
 }
 
 let game = new Game(context);
-
 
 document.addEventListener('keydown',function(e){
   if(e.key === 'ArrowUp'){
@@ -160,10 +180,32 @@ document.onkeyup = function (e) {
   uppressed = false;
 };
 
+canvas.addEventListener('click', function(event) { 
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left
+  const y = event.clientY - rect.top
+  if(game.levelBuilder.canDraw){
+    game.levelBuilder.drawImage(x,y)
+
+  }
+  game.levelBuilder.menu.exit(x,y)
+  game.levelBuilder.menu.coconut(x,y)
+  game.levelBuilder.menu.monkey(x,y)
+});
+
+canvas.addEventListener('mousemove', function(event) {
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left
+  const y = event.clientY - rect.top
+  mx = event.clientX;
+  my = event.clientY;
+});
+
 function gameOn() {
   game.update();
   game.mainMenu()
   game.gameOver()
+  game.editor()
   requestAnimationFrame(gameOn);
 }
 gameOn();

@@ -48,3 +48,15 @@ function levelFour(){
   menuArea.style.display = 'block'
 
 }
+
+function levelFive(){
+  game.level = 4
+  game.state = 1
+  levelDiv.style.display = 'none'
+  menuArea.style.display = 'block'
+
+}
+
+function editor(){
+  game.state = 3
+}

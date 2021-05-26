@@ -5,7 +5,7 @@ class LandingSpace{
         this.timer = 0
 
         this.position = [
-          {x:760,y:450},{x:400,y:490},{x:200,y:490},{x:120,y:500}
+          {x:760,y:450},{x:400,y:490},{x:200,y:490},{x:120,y:500},{x:120,y:500}
         ]
         this.height = 25
         this.width = 202
@@ -47,7 +47,7 @@ class LandingSpace{
                 game.monkey.gravitySpeed = 0;
                 game.monkey.canPlay = true
                 this.timer = 0
-                if(game.level===4){
+                if(game.level===5){
                   game.state = 2
                 }  
               }

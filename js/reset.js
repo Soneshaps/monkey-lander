@@ -5,7 +5,7 @@ class Reset{
   update(){
     game.level = 0
     game.monkey.position = [
-      {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0}
+      {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0},{x:150,y:0},{}
     ]
     game.banana.position = [
       [
@@ -19,6 +19,9 @@ class Reset{
       ],
       [
         {x:60,y:120},{x:300,y:300},{x:610,y:380}
+      ],
+      [
+        {x:60,y:120},{x:300,y:300},{x:610,y:380}
       ]      
     ]
     game.fruit.position = [
@@ -28,6 +31,9 @@ class Reset{
       [
         {x:500,y:250}
       ] ,  
+      [
+        {x:500,y:250}
+      ],
       [
         {x:500,y:250}
       ],

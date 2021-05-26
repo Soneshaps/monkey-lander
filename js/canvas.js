@@ -14,3 +14,7 @@ backgroundImage.src = 'images/background.png'
 
 let leftpressed, rightpressed, uppressed ;
 let paused = false
+
+let mx = 0 , my = 0
+
+

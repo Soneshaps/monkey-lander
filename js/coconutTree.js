@@ -3,7 +3,7 @@ class CoconutTree{
     this.image = new Image()
     this.image.src = 'images/coconut-tree.png'
     this.position = [
-      {},{},{x:-70 ,y:100},{x:480 ,y:140},{}
+      {},{},{x:-70 ,y:100},{x:480 ,y:140},{x:-20,y:190},{}
     ]
     this.sX = 0 
     this.sY = 0

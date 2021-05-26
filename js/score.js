@@ -8,7 +8,6 @@ class Score {
     ctx.lineWidth = 2.5;
 
     ctx.beginPath();
-
     ctx.moveTo(790, this.y);
     ctx.arcTo(980, this.y, 980, 65, 20);
     ctx.arcTo(980, 65, 770, 65, 20);

@@ -19,10 +19,10 @@ class Monkey{
         this.monkeyImage = new Image();
         this.monkeyImage.src = 'images/monkey.png' 
         this.position = [
-            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0}
+            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0},{x:150,y:0},{}
         ]
         this.checkpoint = [
-            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0}
+            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0},{x:150,y:0},{}
         ]
         this.gravitySpeed = 0;
         this.gravity = 0.01;
