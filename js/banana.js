@@ -13,8 +13,11 @@ class Banana{
               {x:60,y:295},{x:900,y:160},{x:650,y:360}
             ],
             [
+              {x:60,y:120}
+            ],
+            [
               {x:60,y:120},{x:300,y:300},{x:610,y:380}
-            ]      
+            ]       
         ]
         
         this.animationPositionList = [
@@ -35,8 +38,7 @@ class Banana{
     }
     update(ctx){
       this.bananaLeftToCollect = this.position[game.level].length
-        let banana = this.animationPositionList[this.tick];
-        if(game.state === 1){
+      let banana = this.animationPositionList[this.tick];
             for (let index = 0; index < this.position[game.level]?.length; index++) {
                 ctx.beginPath();
                 ctx.fillStyle = "#66cc00";
@@ -44,7 +46,7 @@ class Banana{
                 ctx.drawImage(this.bananaImage,banana.sX,banana.sY,this.imageWidth,this.imageHeight,this.position[game.level][index].x,this.position[game.level][index].y,this.imageWidth,this.imageHeight)
                 ctx.closePath()
             }
-        }
+            this.bananaCollision(game.monkey, this);
     }
 
     hang(){

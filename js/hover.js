@@ -23,20 +23,40 @@ function levelOne(){
   game.level = 0
   game.state = 1
   levelDiv.style.display = 'none'
+  menuArea.style.display = 'block'
+
 }
 
 function levelTwo(){
   game.level = 1
   game.state = 1
   levelDiv.style.display = 'none'
+  menuArea.style.display = 'block'
+
 }
 function levelThree(){
   game.level = 2
   game.state = 1
   levelDiv.style.display = 'none'
+  menuArea.style.display = 'block'
+
 }
 function levelFour(){
   game.level = 3
   game.state = 1
   levelDiv.style.display = 'none'
+  menuArea.style.display = 'block'
+
+}
+
+function levelFive(){
+  game.level = 4
+  game.state = 1
+  levelDiv.style.display = 'none'
+  menuArea.style.display = 'block'
+
+}
+
+function editor(){
+  game.state = 3
 }

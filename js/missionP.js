@@ -2,7 +2,6 @@ class MissionP{
     constructor(){
         this.xUpperText = 120
         this.yUpperText = 230
-
         this.xLowerText = 170
         this.yLowerText = 290
         this.width = 120

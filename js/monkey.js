@@ -19,10 +19,10 @@ class Monkey{
         this.monkeyImage = new Image();
         this.monkeyImage.src = 'images/monkey.png' 
         this.position = [
-            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0}
+            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0},{x:150,y:0},{}
         ]
         this.checkpoint = [
-            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0}
+            {x:90,y:0},{x:90,y:0},{x:90,y:0},{x:190,y:0},{x:150,y:0},{}
         ]
         this.gravitySpeed = 0;
         this.gravity = 0.01;
@@ -60,37 +60,41 @@ class Monkey{
         //Image
         ctx.drawImage(this.monkeyImage,this.sX,this.sY,this.width,this.height,this.position[game.level].x,this.position[game.level].y,this.width,this.height);    
         //If can Play is true -> gravity and thrust controls 
-        if(!this.canPlay)
-        return
-        this.landingClock += 1
-        this.position[game.level].y += this.gravitySpeed + this.verticalSpeed;
-        this.gravitySpeed += this.gravity;    
-
-        //vertical        
-        if(uppressed)
-            this.up();
-        else{
-            if(this.verticalSpeed < 0){
-                this.verticalSpeed += this.verticalSpeedFactor;               
+        if(this.canPlay){
+            this.landingClock += 1
+            this.position[game.level].y += this.gravitySpeed + this.verticalSpeed;
+            this.gravitySpeed += this.gravity;    
+    
+        
+            //vertical        
+            if(uppressed){
+                this.up();
+            }
+            else{
+                if(this.verticalSpeed < 0){
+                    this.verticalSpeed += this.verticalSpeedFactor;               
+                }
+            }
+    
+            //horizontal
+            this.position[game.level].x += this.horizontalSpeed * this.movementFactor;
+    
+            if(rightpressed){
+                this.right();
+            }
+            else if(leftpressed){
+                this.left();
+            }else{
+                if (Math.abs(this.horizontalSpeed) > 0){
+                    if(this.horizontalSpeed > 0)
+                        this.horizontalSpeed -=  this.horizontalSpeedFactor;
+                    else if(this.horizontalSpeed < 0)
+                        this.horizontalSpeed +=  this.horizontalSpeedFactor;
+                }
             }
         }
+        
 
-        //horizontal
-        this.position[game.level].x += this.horizontalSpeed * this.movementFactor;
-
-        if(rightpressed){
-            this.right();
-        }
-        else if(leftpressed){
-            this.left();
-        }else{
-            if (Math.abs(this.horizontalSpeed) > 0){
-                if(this.horizontalSpeed > 0)
-                    this.horizontalSpeed -=  this.horizontalSpeedFactor;
-                else if(this.horizontalSpeed < 0)
-                    this.horizontalSpeed +=  this.horizontalSpeedFactor;
-            }
-        }
     }
 
     static(){      
