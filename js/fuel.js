@@ -2,11 +2,6 @@ class Fuel {
   constructor() {
     this.fuelImage = new Image();
     this.fuelImage.src = "images/fuel-bar.png";
-    this.width = 235;
-    this.height = 27;
-    this.x = 735;
-    this.y = 65;
-
     this.fuelHealth = 300;
   }
   update(ctx) {
@@ -31,6 +26,7 @@ class Fuel {
     ctx.rect(672, 74, this.fuelHealth, 22);
     ctx.fill();
     ctx.closePath();
+
     ctx.font = "14px Nunito-Bold";
     ctx.fillStyle = "#ffffff";
     ctx.strokeStyle = "#ffffff";

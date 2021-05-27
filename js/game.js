@@ -25,10 +25,11 @@ class Game {
     this.headOnSpikeReverse = new HeadOnSpikeReverse()
     this.rock = new Rock()
     this.bigRock = new BigRock()
-
+    this.pause = new Pause()
+    this.exit = new Exit()
 
     this.level = 0;
-    this.state = 0;
+    this.state = 1;
     this.gameClock = 0;
     this.gameoverTimer = 0;
 
@@ -41,7 +42,6 @@ class Game {
       this.background.update(this.context);
       this.fruit.update(this.context)
       this.checkBorderCollision();
-
       if(this.level === 1){
         this.cliffLeft.update(this.context)
         this.cliffRight.update(this.context)
@@ -74,12 +74,15 @@ class Game {
         this.banana.hang();
       }
       //after collecting all bananas
-  
-
       if (game.banana.bananaLeftToCollect === 0) {
         this.landingSpace.update(this.context);
         this.landingSpace.landingCollision(this.monkey, this.landingSpace);
       }
+
+      if(paused){
+        this.pause.update(this.context)
+      }
+
     }
   }
   mainMenu(){
@@ -91,13 +94,7 @@ class Game {
   }
   gameOver(){
     if(this.state ===2){
-      this.gameoverTimer += 1
       this.gameover.update(this.context)
-      if(this.gameoverTimer > 100){
-        this.state = 0
-        this.reset.update()
-        this.gameoverTimer = 0
-      }
     }
   }
   editor(){
@@ -161,8 +158,10 @@ document.addEventListener('keydown',function(e){
   if(e.keyCode === 80){
     if(game.monkey.canPlay){
       game.monkey.canPlay = false
+      paused = true
     }else{
       game.monkey.canPlay = true
+      paused = false
     }
   }
 })
@@ -186,11 +185,11 @@ canvas.addEventListener('click', function(event) {
   const y = event.clientY - rect.top
   if(game.levelBuilder.canDraw){
     game.levelBuilder.drawImage(x,y)
-
   }
   game.levelBuilder.menu.exit(x,y)
   game.levelBuilder.menu.coconut(x,y)
   game.levelBuilder.menu.monkey(x,y)
+  game.exit.quit(x,y)
 });
 
 canvas.addEventListener('mousemove', function(event) {

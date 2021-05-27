@@ -49,5 +49,7 @@ class Reset{
     game.monkey.verticalSpeed = 0;
     game.monkey.verticalSpeedFactor = 0.05
     game.monkey.horizontalSpeedFactor = 0.2
+    game.monkey.canPlay = true
+    paused = false
   }
 }

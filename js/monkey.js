@@ -92,6 +92,13 @@ class Monkey{
                         this.horizontalSpeed +=  this.horizontalSpeedFactor;
                 }
             }
+
+            if(rightpressed && uppressed){
+                this.upRight()
+            }
+            if(leftpressed && uppressed){
+                this.upLeft()
+            }
         }
         
 
@@ -118,6 +125,18 @@ class Monkey{
        // this.gravitySpeed = this.gravitySpeed;
         this.horizontalSpeed +=  this.horizontalSpeedFactor;
         this.sY = 253.4
+    }
+
+    landed(){
+        this.sY = 523.5 
+    }
+    
+    upRight(){
+        this.sY = 662.25 
+    }
+
+    upLeft(){
+        this.sY = 798.55
     }
 
     monkeyPoly(){
