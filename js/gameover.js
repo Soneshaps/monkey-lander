@@ -38,5 +38,7 @@ class GameOver{
     ctx.font = "35px Nunito-ExtraBold";
     ctx.strokeText(`MONKEY POINTS!`, this.lineThirdX,this.lineThirdY);
     ctx.fillText(`MONKEY POINTS!`, this.lineThirdX,this.lineThirdY);
+
+    game.exit.update(ctx)
   }
 }

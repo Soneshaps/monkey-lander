@@ -11,7 +11,7 @@ class LandingSpace{
         this.width = 202
     }
     update(ctx){
-        ctx.drawImage(this.landingSpaceImg,0,0,this.width,this.height,this.position[game.level].x,this.position[game.level].y,this.width,this.height)
+        ctx.drawImage(this.landingSpaceImg,1,1,this.width,this.height,this.position[game.level].x,this.position[game.level].y,this.width,this.height)
     }
 
     landingCollision(rect1, rect2) {
@@ -31,7 +31,7 @@ class LandingSpace{
             //Stopping the monkey movement
             game.monkey.canPlay = false
             //changing the Sprite
-            game.monkey.static();
+            game.monkey.landed();
             if(this.timer>50){
               game.missionP.update(game.context);
               if (game.fuel.fuelHealth > 0) {
@@ -46,6 +46,7 @@ class LandingSpace{
                 game.monkey.verticalSpeed = 0;
                 game.monkey.gravitySpeed = 0;
                 game.monkey.canPlay = true
+                game.monkey.static();
                 this.timer = 0
                 if(game.level===5){
                   game.state = 2
