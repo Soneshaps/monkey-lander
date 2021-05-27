@@ -34,8 +34,8 @@ class Fuel {
     ctx.fillText("COCONUT FUEL", 770, 90);
 
     if (this.fuelHealth < 1) {
-      game.monkey.verticalSpeedFactor = 0 
-      game.monkey.horizontalSpeedFactor = 0
+      game.monkey.verticalSpeedFactor = 0;
+      game.monkey.horizontalSpeedFactor = 0;
     }
   }
 
