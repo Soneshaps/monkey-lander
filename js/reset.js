@@ -53,5 +53,6 @@ class Reset {
     game.monkey.canPlay = true;
     paused = false;
     score = 0;
+    game.landingSpace.sound = false;
   }
 }

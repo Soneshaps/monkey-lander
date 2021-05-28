@@ -18,19 +18,19 @@ class Monkey {
     this.monkeyImage = new Image();
     this.monkeyImage.src = "images/monkey.png";
     this.position = [
-      { x: 90, y: 0 },
-      { x: 90, y: 0 },
-      { x: 90, y: 0 },
-      { x: 190, y: 0 },
-      { x: 150, y: 0 },
+      { x: 90, y: -40 },
+      { x: 90, y: -40 },
+      { x: 90, y: -40 },
+      { x: 190, y: -40 },
+      { x: 150, y: -40 },
       {},
     ];
     this.checkpoint = [
-      { x: 90, y: 0 },
-      { x: 90, y: 0 },
-      { x: 90, y: 0 },
-      { x: 190, y: 0 },
-      { x: 150, y: 0 },
+      { x: 90, y: -40 },
+      { x: 90, y: -40 },
+      { x: 90, y: -40 },
+      { x: 190, y: -40 },
+      { x: 150, y: -40 },
       {},
     ];
     this.gravitySpeed = 0;
@@ -143,10 +143,10 @@ class Monkey {
 
       //vertical
       if (uppressed) {
-        game.sound.start.play();
+        game.sound.startUp.play();
         this.up();
       } else {
-        game.sound.start.pause();
+        game.sound.startUp.pause();
         if (this.verticalSpeed < 0) {
           this.verticalSpeed += this.verticalSpeedFactor;
         }
@@ -156,10 +156,8 @@ class Monkey {
       this.position[game.level].x += this.horizontalSpeed * this.movementFactor;
 
       if (rightpressed) {
-        game.sound.start.play();
         this.right();
       } else if (leftpressed) {
-        game.sound.start.play();
         this.left();
       } else {
         game.sound.start.pause();
@@ -187,19 +185,20 @@ class Monkey {
   up() {
     this.landingClock = 0;
     this.verticalSpeed -= this.verticalSpeedFactor;
-
     this.sY = 124;
   }
 
   left() {
     this.horizontalSpeed -= this.horizontalSpeedFactor;
     this.sY = 389.8;
+    game.sound.start.play();
   }
 
   right() {
     // this.gravitySpeed = this.gravitySpeed;
     this.horizontalSpeed += this.horizontalSpeedFactor;
     this.sY = 253.4;
+    game.sound.start.play();
   }
 
   landed() {

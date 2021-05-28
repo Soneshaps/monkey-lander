@@ -14,8 +14,14 @@ class LandingSpace {
     this.height = 25;
     this.width = 202;
     this.nextLevelTimer = 0;
+    this.sound = false;
+    this.victorySound = false;
   }
   update(ctx) {
+    if (!this.sound) {
+      game.sound.landPop.play();
+      this.sound = true;
+    }
     ctx.drawImage(
       this.landingSpaceImg,
       1,
@@ -46,18 +52,26 @@ class LandingSpace {
         rect2.position[game.level].x + rect2.width >
           rect1.position[game.level].x + rect1.width - 30.24
       ) {
+        if (!this.victorySound) {
+          game.sound.victory.play();
+          this.victorySound = true;
+        }
+        game.sound.startUp.pause();
+        game.sound.start.pause();
         //timer ON
         this.timer += 1;
         //Stopping the monkey movement
         game.monkey.canPlay = false;
         //changing the Sprite
         game.monkey.landed();
-        if (this.timer > 50) {
+        if (this.timer > 53) {
           game.missionP.update(game.context);
           if (game.fuel.fuelHealth > 0) {
             score += 1;
             game.fuel.decreaseFuel();
+            game.sound.points.play();
           } else {
+            game.sound.points.pause();
             this.nextLevelTimer += 1;
             if (this.nextLevelTimer > 150) {
               game.level += 1;
@@ -71,6 +85,9 @@ class LandingSpace {
               game.monkey.static();
               this.nextLevelTimer = 0;
               this.timer = 0;
+              this.sound = false;
+              this.victorySound = false;
+              game.sound.spawn.play();
             }
             if (game.level === 5) {
               game.state = 2;

@@ -76,6 +76,7 @@ class LevelBuilderMenu {
     );
     if (distance < this.radius) {
       game.state = 0;
+      game.reset.update();
     }
   }
 

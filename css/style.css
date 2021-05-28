@@ -1,205 +1,213 @@
-*{
-    padding: 0;
-    margin: 0;
+* {
+  padding: 0;
+  margin: 0;
 }
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap");
 @font-face {
-    font-family: Nunito;
-    src: url('../fonts/Nunito-Regular.ttf');
-}
-
-@font-face {
-    font-family: Nunito-Bold;
-    src: url('../fonts/Nunito-Bold.ttf');
+  font-family: Nunito;
+  src: url("../fonts/Nunito-Regular.ttf");
 }
 
 @font-face {
-    font-family: Nunito-ExtraBold;
-    src: url('../fonts/Nunito-ExtraBold.ttf');
+  font-family: Nunito-Bold;
+  src: url("../fonts/Nunito-Bold.ttf");
 }
 
-body{
-    font-family: Nunito;
-    background-color: #ebebeb;
+@font-face {
+  font-family: Nunito-ExtraBold;
+  src: url("../fonts/Nunito-ExtraBold.ttf");
 }
 
-canvas{
-    letter-spacing: 2px;
-    background-color: greenyellow;
-    position: absolute;
-    top: 30px;
-    left: calc(50% - 496px);
+body {
+  font-family: Nunito;
+  background-color: #ebebeb;
 }
 
-#menu{
-    height: 530px;
-    width: 993px;
-    background: url('../images/menu1.png');
-    margin: 30px auto 0 auto;
-    position: relative;
+canvas {
+  letter-spacing: 2px;
+  background-color: greenyellow;
+  position: absolute;
+  top: 30px;
+  left: calc(50% - 496px);
 }
 
-
-
-.button{
-    font-family: Nunito-ExtraBold;
-    color: #666666;
-    height: 55px;
-    padding: 0 30px;
-    background-color: #ffffff;
-    font-size: 30px;
-    border-top: 2px solid #000000;
-    border-bottom: 2px solid #000000;
-    border-radius: 15px;
-    border-left: 4px solid #000000;
-    border-right: 4px solid #000000;
-    cursor: pointer;
-}
-.button:hover{
-    color: #ff6600;
+#menu {
+  height: 530px;
+  width: 993px;
+  background: url("../images/menu1.png");
+  margin: 30px auto 0 auto;
+  position: relative;
 }
 
-#play{
-    position: absolute;
-    bottom: 20px;
-    right: 30px;
+.button {
+  font-family: Nunito-ExtraBold;
+  color: #666666;
+  height: 55px;
+  padding: 0 30px;
+  background-color: #ffffff;
+  font-size: 30px;
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  border-radius: 15px;
+  border-left: 4px solid #000000;
+  border-right: 4px solid #000000;
+  cursor: pointer;
 }
-#level{
-    position: absolute;
-    bottom: 85px;
-    right: 30px;
-}
-#how{
-    position: absolute;
-    bottom: 150px;
-    right: 30px;
-}
-
-#play:hover #menu{
-    background: url('../images/menu2.png');
+.button:hover {
+  color: #ff6600;
 }
 
-#level-area{
-    height: 530px;
-    width: 993px;
-    background: url('../images/gameover-background.png');
-    display: none;
+#play {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+}
+#level {
+  position: absolute;
+  bottom: 85px;
+  right: 30px;
+}
+#how {
+  position: absolute;
+  bottom: 150px;
+  right: 30px;
+}
+#level-builder {
+  position: absolute;
+  bottom: 215px;
+  right: 30px;
 }
 
-#menu-area{
-    /* display: none; */
+#play:hover #menu {
+  background: url("../images/menu2.png");
 }
 
-h1{
-    font-size: 4em;
-    color: #ff6600;
-    font-family: Nunito-ExtraBold;
+#level-area {
+  height: 530px;
+  width: 993px;
+  background: url("../images/gameover-background.png");
+  display: none;
 }
 
-.header{
-    margin:30px 0 15px 30px;
+#how-to-play {
+  height: 530px;
+  width: 993px;
+  background: url("../images/howtoplay.png");
+  display: none;
 }
 
-.level-wrapper{
-    margin: 0 auto;
-    width: 940px;
-    height: 20px;
-    display: flex;
-    
-    flex-wrap: wrap;
+#menu-area {
+  /* display: none; */
 }
 
-.level-item{
-    height: 190px;
-    width: 270px;
-    background-color: #000000;
-    margin-right: 43px;
-    margin-bottom: 20px;
-    font-family: Nunito-ExtraBold;
-    font-size: 4em;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;  
-
+h1 {
+  font-size: 4em;
+  color: #ff6600;
+  font-family: Nunito-ExtraBold;
 }
 
-
-
-.level-item::before{
-    content: '';
-    position: absolute;
-    height: 190px;
-    width: 270px;;
-    background-color: #000000; 
-    opacity: 30%;
-    line-height: 190px;
-    text-align: center;
-    border-radius: 5px;
-    color: #ff6600;
+.header {
+  margin: 30px 0 15px 30px;
 }
 
-#level-one{
-    background: url('../images/level2.png'); 
-    background-size: cover;
-    
+.level-wrapper {
+  margin: 0 auto;
+  width: 940px;
+  height: 20px;
+  display: flex;
+
+  flex-wrap: wrap;
 }
 
-#level-one:hover:before{
-    content: '1';
-    opacity: 65%;
-    background-color: #ebebeb;
+.level-item {
+  height: 190px;
+  width: 270px;
+  background-color: #000000;
+  margin-right: 43px;
+  margin-bottom: 20px;
+  font-family: Nunito-ExtraBold;
+  font-size: 4em;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
 }
 
-#level-two{
-    background: url('../images/level2.png'); 
-    background-size: cover;
-    
+.level-item::before {
+  content: "";
+  position: absolute;
+  height: 190px;
+  width: 270px;
+  background-color: #000000;
+  opacity: 30%;
+  line-height: 190px;
+  text-align: center;
+  border-radius: 5px;
+  color: #ff6600;
 }
 
-#level-two:hover:before{
-    content: '2';
-    opacity: 65%;
-    background-color: #ebebeb;
+#level-one {
+  background: url("../images/level2.png");
+  background-size: cover;
 }
 
-#level-three{
-    background: url('../images/level2.png'); 
-    background-size: cover;
-    
+#level-one:hover:before {
+  content: "1";
+  opacity: 65%;
+  background-color: #ebebeb;
 }
 
-#level-three:hover:before{
-    content: '3';
-    opacity: 65%;
-    background-color: #ebebeb;
+#level-two {
+  background: url("../images/level2.png");
+  background-size: cover;
 }
 
-#level-four{
-    background: url('../images/level2.png'); 
-    background-size: cover;
-    
+#level-two:hover:before {
+  content: "2";
+  opacity: 65%;
+  background-color: #ebebeb;
 }
 
-#level-four:hover:before{
-    content: '4';
-    opacity: 65%;
-    background-color: #ebebeb;
+#level-three {
+  background: url("../images/level2.png");
+  background-size: cover;
 }
 
-#level-five{
-    background: url('../images/level2.png'); 
-    background-size: cover;
-    
+#level-three:hover:before {
+  content: "3";
+  opacity: 65%;
+  background-color: #ebebeb;
 }
 
-#level-five:hover:before{
-    content: '5';
-    opacity: 65%;
-    background-color: #ebebeb;
+#level-four {
+  background: url("../images/level2.png");
+  background-size: cover;
 }
 
-#back-button{
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
+#level-four:hover:before {
+  content: "4";
+  opacity: 65%;
+  background-color: #ebebeb;
+}
+
+#level-five {
+  background: url("../images/level2.png");
+  background-size: cover;
+}
+
+#level-five:hover:before {
+  content: "5";
+  opacity: 65%;
+  background-color: #ebebeb;
+}
+
+#level-back-button {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+#how-to-back-button {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
 }
