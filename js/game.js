@@ -114,6 +114,7 @@ class Game {
   }
 
   checkPoint() {
+    game.sound.spawn.play();
     this.monkey.position[this.level].y = this.monkey.checkpoint[this.level].y;
     this.monkey.position[this.level].x = this.monkey.checkpoint[this.level].x;
     this.fuel.fuelHealth = 300;
@@ -161,10 +162,6 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-playButton.addEventListener("click", function () {
-  game.state = 1;
-});
-
 document.onkeyup = function (e) {
   game.monkey.static();
   leftpressed = false;
@@ -183,7 +180,6 @@ canvas.addEventListener("click", function (event) {
   game.levelBuilder.menu.coconut(x, y);
   game.levelBuilder.menu.monkey(x, y);
   game.exit.quit(x, y);
-  game.levelBuilder.menu.banana(x, y);
 });
 
 canvas.addEventListener("mousemove", function (event) {

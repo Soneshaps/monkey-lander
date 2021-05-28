@@ -14,9 +14,13 @@
           <button class="button" id="level-builder" onclick="editor()">
             EDITOR
           </button>
-          <button class="button" id="play">PLAY !</button>
-          <button class="button" id="level">LEVELS</button>
-          <button class="button" id="how">HOW TO PLAY</button>
+          <button class="button" id="play" onclick="play()">PLAY !</button>
+          <button class="button" id="level" onclick="levelButton()">
+            LEVELS
+          </button>
+          <button class="button" id="how" onclick="howToPlay()">
+            HOW TO PLAY
+          </button>
         </div>
         <div id="level-area">
           <h1 class="header">LEVELS</h1>
@@ -31,7 +35,16 @@
             <div id="level-four" class="level-item" onclick="levelFour()"></div>
             <div id="level-five" class="level-item" onclick="levelFive()"></div>
           </div>
-          <button id="back-button" class="button" onclick="backButton()">
+          <button
+            id="level-back-button"
+            class="button"
+            onclick="levelBackButton()"
+          >
+            BACK
+          </button>
+        </div>
+        <div id="how-to-play">
+          <button id="how-to-back-button" class="button" onclick="backButton()">
             BACK
           </button>
         </div>

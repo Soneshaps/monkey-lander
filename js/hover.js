@@ -1,21 +1,34 @@
 let playButton = document.getElementById("play");
-let levelButton = document.getElementById("level");
-let howButton = document.getElementById("how");
-let backButton = document.getElementById("back-button");
 
 let levelDiv = document.getElementById("level-area");
+let howToDiv = document.getElementById("how-to-play");
 let menuDiv = document.getElementById("menu");
 let menuArea = document.getElementById("menu-area");
 
-backButton.addEventListener("click", function () {
+function play() {
+  game.state = 1;
+  game.sound.spawn.play();
+}
+
+function levelBackButton() {
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
-});
+}
 
-levelButton.addEventListener("click", function () {
+function backButton() {
+  howToDiv.style.display = "none";
+  menuArea.style.display = "block";
+}
+
+function levelButton() {
   levelDiv.style.display = "block";
   menuArea.style.display = "none";
-});
+}
+
+function howToPlay() {
+  howToDiv.style.display = "block";
+  menuArea.style.display = "none";
+}
 
 function levelOne() {
   game.level = 0;
