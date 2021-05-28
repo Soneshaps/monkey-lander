@@ -58,13 +58,8 @@ class CliffLeft {
       { x: this.x, y: this.y + 202 },
       { x: this.x, y: this.y + 3 },
     ];
-    var sides = [];
-    for (let i = 0; i < points.length - 1; i++) {
-      sides.push([
-        { x: points[i].x, y: points[i].y },
-        { x: points[i + 1].x, y: points[i + 1].y },
-      ]);
-    }
+    var sides = game.collision.pointToSide(points);
+
     points.pop();
 
     return { p: points, s: sides };

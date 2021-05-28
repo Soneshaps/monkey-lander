@@ -50,8 +50,9 @@ class Fruit {
   }
 
   fruitCollision(rect1, rect2) {
+    let position = this.position[game.level];
     for (let index = 0; index < this.position[game.level].length; index++) {
-      if (
+      let fruitCollision =
         rect1.position[game.level].x <
           rect2.position[game.level][index].x + rect2.width &&
         rect1.position[game.level].x + rect1.width >
@@ -59,8 +60,8 @@ class Fruit {
         rect1.position[game.level].y <
           rect2.position[game.level][index].y + rect2.height &&
         rect1.position[game.level].y + rect1.height >
-          rect2.position[game.level][index].y
-      ) {
+          rect2.position[game.level][index].y;
+      if (fruitCollision) {
         this.position[game.level].splice(index, 1);
         score += 500;
         game.sound.eat.play();

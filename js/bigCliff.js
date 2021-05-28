@@ -21,25 +21,6 @@ class BigCliff {
       this.width,
       this.height
     );
-
-    //drawing polygon
-    ctx.beginPath();
-    ctx.strokeStyle = "red";
-    ctx.moveTo(this.x, this.y + 2);
-    ctx.lineTo(this.x + 27, this.y + 12);
-    ctx.lineTo(this.x + 80, this.y + 19);
-    ctx.lineTo(this.x + 115, this.y + 18);
-    ctx.lineTo(this.x + 140, this.y + 32);
-    ctx.lineTo(this.x + 147, this.y + 50);
-    ctx.lineTo(this.x + 135, this.y + 90);
-    ctx.lineTo(this.x + 116, this.y + 120);
-    ctx.lineTo(this.x + 103, this.y + 165);
-    ctx.lineTo(this.x + 106, this.y + 200);
-    ctx.lineTo(this.x + 99, this.y + 219);
-    ctx.lineTo(this.x, this.y + 219);
-    ctx.lineTo(this.x, this.y + 2);
-    ctx.closePath();
-
     if (game.collision.collide(game.monkey.monkeyPoly(), this.cliffPoly())) {
       game.dead();
     }

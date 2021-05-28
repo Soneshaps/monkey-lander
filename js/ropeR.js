@@ -22,19 +22,6 @@ class RopeR {
       this.height
     );
 
-    // drawing polygon
-    ctx.beginPath();
-    ctx.strokeStyle = "red";
-    ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x + 27, this.y + 50);
-    ctx.lineTo(this.x + 56, this.y + 90);
-    ctx.lineTo(this.x + 99, this.y + 130);
-    ctx.lineTo(this.x + 128, this.y + 150);
-    ctx.lineTo(this.x + 157, this.y + 172);
-    ctx.lineTo(this.x + 157, this.y);
-    ctx.lineTo(this.x, this.y);
-    ctx.closePath();
-
     if (game.collision.collide(game.monkey.monkeyPoly(), this.ropePoly())) {
       game.dead();
     }

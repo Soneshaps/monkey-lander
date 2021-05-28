@@ -214,88 +214,83 @@ class Monkey {
   }
 
   monkeyPoly() {
+    let position = this.position[game.level];
     var points = [
-      { x: this.position[game.level].x + 100, y: this.position[game.level].y },
+      { x: position.x + 100, y: position.y },
       {
-        x: this.position[game.level].x + 130,
-        y: this.position[game.level].y + 7,
+        x: position.x + 130,
+        y: position.y + 7,
       },
       {
-        x: this.position[game.level].x + 145,
-        y: this.position[game.level].y + 33,
+        x: position.x + 145,
+        y: position.y + 33,
       },
       {
-        x: this.position[game.level].x + 173,
-        y: this.position[game.level].y + 52,
+        x: position.x + 173,
+        y: position.y + 52,
       },
       {
-        x: this.position[game.level].x + 175,
-        y: this.position[game.level].y + 75,
+        x: position.x + 175,
+        y: position.y + 75,
       },
       {
-        x: this.position[game.level].x + 160,
-        y: this.position[game.level].y + 78,
+        x: position.x + 160,
+        y: position.y + 78,
       },
       {
-        x: this.position[game.level].x + 165,
-        y: this.position[game.level].y + 98,
+        x: position.x + 165,
+        y: position.y + 98,
       },
       {
-        x: this.position[game.level].x + 132,
-        y: this.position[game.level].y + 108,
+        x: position.x + 132,
+        y: position.y + 108,
       },
       {
-        x: this.position[game.level].x + 125,
-        y: this.position[game.level].y + 90,
+        x: position.x + 125,
+        y: position.y + 90,
       },
       {
-        x: this.position[game.level].x + 60,
-        y: this.position[game.level].y + 90,
+        x: position.x + 60,
+        y: position.y + 90,
       },
       {
-        x: this.position[game.level].x + 57,
-        y: this.position[game.level].y + 108,
+        x: position.x + 57,
+        y: position.y + 108,
       },
       {
-        x: this.position[game.level].x + 27,
-        y: this.position[game.level].y + 95,
+        x: position.x + 27,
+        y: position.y + 95,
       },
       {
-        x: this.position[game.level].x + 30,
-        y: this.position[game.level].y + 77,
+        x: position.x + 30,
+        y: position.y + 77,
       },
       {
-        x: this.position[game.level].x + 17,
-        y: this.position[game.level].y + 70,
+        x: position.x + 17,
+        y: position.y + 70,
       },
       {
-        x: this.position[game.level].x + 15,
-        y: this.position[game.level].y + 55,
+        x: position.x + 15,
+        y: position.y + 55,
       },
       {
-        x: this.position[game.level].x + 30,
-        y: this.position[game.level].y + 35,
+        x: position.x + 30,
+        y: position.y + 35,
       },
       {
-        x: this.position[game.level].x + 52,
-        y: this.position[game.level].y + 27,
+        x: position.x + 52,
+        y: position.y + 27,
       },
       {
-        x: this.position[game.level].x + 60,
-        y: this.position[game.level].y + 10,
+        x: position.x + 60,
+        y: position.y + 10,
       },
       {
-        x: this.position[game.level].x + 72,
-        y: this.position[game.level].y + 2,
+        x: position.x + 72,
+        y: position.y + 2,
       },
     ];
-    var sides = [];
-    for (let i = 0; i < points.length - 1; i++) {
-      sides.push([
-        { x: points[i].x, y: points[i].y },
-        { x: points[i + 1].x, y: points[i + 1].y },
-      ]);
-    }
+    var sides = game.collision.pointToSide(points);
     points.pop();
 
     return { p: points, s: sides };
