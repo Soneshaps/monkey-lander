@@ -146,7 +146,7 @@ h1 {
 }
 
 #level-one {
-  background: url("../images/level2.png");
+  background: url("../images/level1.png");
   background-size: cover;
 }
 
@@ -168,7 +168,7 @@ h1 {
 }
 
 #level-three {
-  background: url("../images/level2.png");
+  background: url("../images/level3.png");
   background-size: cover;
 }
 
@@ -179,7 +179,7 @@ h1 {
 }
 
 #level-four {
-  background: url("../images/level2.png");
+  background: url("../images/level4.png");
   background-size: cover;
 }
 
@@ -190,7 +190,7 @@ h1 {
 }
 
 #level-five {
-  background: url("../images/level2.png");
+  background: url("../images/level5.png");
   background-size: cover;
 }
 

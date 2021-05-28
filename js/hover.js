@@ -35,6 +35,7 @@ function levelOne() {
   game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
+  game.sound.spawn.play();
 }
 
 function levelTwo() {
@@ -42,18 +43,21 @@ function levelTwo() {
   game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
+  game.sound.spawn.play();
 }
 function levelThree() {
   game.level = 2;
   game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
+  game.sound.spawn.play();
 }
 function levelFour() {
   game.level = 3;
   game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
+  game.sound.spawn.play();
 }
 
 function levelFive() {
@@ -61,6 +65,7 @@ function levelFive() {
   game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
+  game.sound.spawn.play();
 }
 
 function editor() {
