@@ -30,8 +30,8 @@ class Game {
     this.highscore = new Highscore();
     this.sound = new Sound();
     this.levelFunction = new Level();
-    this.level = 4;
-    this.state = 1;
+    this.level = 0;
+    this.state = 0;
     this.gameClock = 0;
     this.gameoverTimer = 0;
     this.fruit = new Fruit(this);
