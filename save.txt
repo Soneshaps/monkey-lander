@@ -1,9 +1,0 @@
-        this.xMonkeyPosition = 100
-        this.yMonkeyPosition = 100
-        // this.jumpHeight = 4;
-        // this.speed = 0;
-        // this.gravity = .2;
-        // this.radius = 12;
-        this.xCenter = 95.6
-        this.yCenter = 55.5
-        this.translateDegree = 0

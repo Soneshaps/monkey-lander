@@ -9,11 +9,26 @@ class Fruit {
     this.fruitNo = Math.round(Math.random() * (this.fruitImgs.length - 1));
 
     this.position = [
-      [{ x: 500, y: 250 }],
-      [{ x: 500, y: 250 }],
-      [{ x: 500, y: 250 }],
-      [{ x: 500, y: 250 }],
-      [{ x: 500, y: 250 }],
+      [{ x: 430, y: 250 }],
+      [
+        { x: 550, y: 300 },
+        { x: 350, y: 300 },
+      ],
+      [
+        { x: 880, y: 150 },
+        { x: 670, y: 350 },
+        { x: 350, y: 350 },
+      ],
+      [
+        { x: 500, y: 60 },
+        { x: 850, y: 250 },
+        { x: 900, y: 450 },
+      ],
+      [
+        { x: 250, y: 390 },
+        { x: 580, y: 360 },
+        { x: 650, y: 220 },
+      ],
     ];
 
     this.width = 25;
@@ -22,17 +37,8 @@ class Fruit {
     this.imageWidth = 270;
   }
   update(ctx) {
-    this.image.src = this.fruitImgs[this.fruitNo];
-
     for (let index = 0; index < this.position[game.level]?.length; index++) {
-      ctx.beginPath();
-      ctx.fillStyle = "#66cc00";
-      ctx.rect(
-        this.position[game.level][index].x + this.width,
-        this.position[game.level][index].y,
-        this.width,
-        this.height
-      );
+      this.image.src = this.fruitImgs[this.fruitNo];
       ctx.drawImage(
         this.image,
         0,
@@ -44,13 +50,11 @@ class Fruit {
         this.imageWidth,
         this.imageHeight
       );
-      ctx.closePath();
     }
     this.fruitCollision(game.monkey, this);
   }
 
   fruitCollision(rect1, rect2) {
-    let position = this.position[game.level];
     for (let index = 0; index < this.position[game.level].length; index++) {
       let fruitCollision =
         rect1.position[game.level].x <
@@ -63,7 +67,7 @@ class Fruit {
           rect2.position[game.level][index].y;
       if (fruitCollision) {
         this.position[game.level].splice(index, 1);
-        score += 500;
+        score += fruitsPoint;
         game.sound.eat.play();
       }
     }
