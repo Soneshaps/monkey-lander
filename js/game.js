@@ -82,7 +82,7 @@ class Game {
     game.sound.spawn.play();
     this.monkey.position[this.level].y = this.monkey.checkpoint[this.level].y;
     this.monkey.position[this.level].x = this.monkey.checkpoint[this.level].x;
-    this.fuel.fuelHealth = 300;
+    this.fuel.fuelHealth = fuelHealth;
     this.monkey.gravitySpeed = 0;
     this.monkey.horizontalSpeed = 0;
     this.monkey.verticalSpeed = 0;

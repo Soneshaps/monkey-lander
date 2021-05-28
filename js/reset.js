@@ -56,7 +56,7 @@ class Reset {
     ];
 
     game.monkeyLife.monkeyLeft = 3;
-    game.fuel.fuelHealth = 300;
+    game.fuel.fuelHealth = fuelHealth;
     game.monkey.gravitySpeed = 0;
     game.monkey.horizontalSpeed = 0;
     game.monkey.verticalSpeed = 0;
