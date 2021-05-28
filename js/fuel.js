@@ -1,7 +1,5 @@
 class Fuel {
   constructor() {
-    this.fuelImage = new Image();
-    this.fuelImage.src = "images/fuel-bar.png";
     this.fuelHealth = fuelHealth;
   }
   update(ctx) {
