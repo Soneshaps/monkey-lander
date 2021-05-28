@@ -197,4 +197,5 @@ function gameOn() {
   game.editor();
   requestAnimationFrame(gameOn);
 }
+
 gameOn();

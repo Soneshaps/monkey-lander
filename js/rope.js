@@ -23,16 +23,6 @@ class Rope {
     );
 
     //drawing polygon
-    ctx.beginPath();
-    ctx.strokeStyle = "red";
-    ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x + 157, this.y);
-    ctx.lineTo(this.x + 130, this.y + 50);
-    ctx.lineTo(this.x + 93, this.y + 100);
-    ctx.lineTo(this.x + 30, this.y + 150);
-    ctx.lineTo(this.x, this.y + 172);
-    ctx.lineTo(this.x, this.y);
-    ctx.closePath();
 
     if (game.collision.collide(game.monkey.monkeyPoly(), this.ropePoly())) {
       game.dead();

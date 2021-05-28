@@ -40,29 +40,21 @@ class Banana {
     this.imageWidth = 270;
   }
   update(ctx) {
-    this.bananaLeftToCollect = this.position[game.level].length;
+    let position = this.position[game.level];
+    this.bananaLeftToCollect = position.length;
     let banana = this.animationPositionList[this.tick];
-    for (let index = 0; index < this.position[game.level]?.length; index++) {
-      ctx.beginPath();
-      ctx.fillStyle = "#66cc00";
-      ctx.rect(
-        this.position[game.level][index].x + this.width,
-        this.position[game.level][index].y,
-        this.width,
-        this.height
-      );
+    for (let index = 0; index < position?.length; index++) {
       ctx.drawImage(
         this.bananaImage,
         banana.sX,
         banana.sY,
         this.imageWidth,
         this.imageHeight,
-        this.position[game.level][index].x,
-        this.position[game.level][index].y,
+        position[index].x,
+        position[index].y,
         this.imageWidth,
         this.imageHeight
       );
-      ctx.closePath();
     }
     this.bananaCollision(game.monkey, this);
   }
@@ -77,7 +69,7 @@ class Banana {
       index < game.banana.position[game.level].length;
       index++
     ) {
-      if (
+      let bananaCollision =
         rect1.position[game.level].x <
           rect2.position[game.level][index].x + rect2.width &&
         rect1.position[game.level].x + rect1.width >
@@ -85,8 +77,8 @@ class Banana {
         rect1.position[game.level].y <
           rect2.position[game.level][index].y + rect2.height &&
         rect1.position[game.level].y + rect1.height >
-          rect2.position[game.level][index].y
-      ) {
+          rect2.position[game.level][index].y;
+      if (bananaCollision) {
         this.position[game.level].splice(index, 1);
         this.bananaLeftToCollect -= 1;
         score += 200;

@@ -21,72 +21,42 @@ class Rock {
       this.height
     );
 
-    ctx.beginPath();
-    ctx.moveTo(this.position[game.level].x, this.position[game.level].y);
-    ctx.lineTo(this.position[game.level].x + 120, this.position[game.level].y);
-    ctx.lineTo(
-      this.position[game.level].x + 111,
-      this.position[game.level].y + 70
-    );
-    ctx.lineTo(
-      this.position[game.level].x + 112,
-      this.position[game.level].y + 100
-    );
-    ctx.lineTo(
-      this.position[game.level].x + 107,
-      this.position[game.level].y + 112
-    );
-    ctx.lineTo(
-      this.position[game.level].x + 85,
-      this.position[game.level].y + 120
-    );
-    ctx.lineTo(
-      this.position[game.level].x + 25,
-      this.position[game.level].y + 120
-    );
-    ctx.lineTo(this.position[game.level].x, this.position[game.level].y + 116);
-    ctx.lineTo(this.position[game.level].x, this.position[game.level].y);
-    ctx.closePath();
-
     if (game.collision.collide(game.monkey.monkeyPoly(), this.rockPoly())) {
       game.dead();
     }
   }
 
   rockPoly() {
+    let position = this.position[game.level];
     var points = [
-      { x: this.position[game.level].x, y: this.position[game.level].y },
-      { x: this.position[game.level].x + 120, y: this.position[game.level].y },
+      { x: position.x, y: position.y },
+      { x: position.x + 120, y: position.y },
       {
-        x: this.position[game.level].x + 111,
-        y: this.position[game.level].y + 70,
+        x: position.x + 111,
+        y: position.y + 70,
       },
       {
-        x: this.position[game.level].x + 112,
-        y: this.position[game.level].y + 100,
+        x: position.x + 112,
+        y: position.y + 100,
       },
       {
-        x: this.position[game.level].x + 107,
-        y: this.position[game.level].y + 112,
+        x: position.x + 107,
+        y: position.y + 112,
       },
       {
-        x: this.position[game.level].x + 85,
-        y: this.position[game.level].y + 120,
+        x: position.x + 85,
+        y: position.y + 120,
       },
       {
-        x: this.position[game.level].x + 25,
-        y: this.position[game.level].y + 120,
+        x: position.x + 25,
+        y: position.y + 120,
       },
-      { x: this.position[game.level].x, y: this.position[game.level].y + 116 },
-      { x: this.position[game.level].x, y: this.position[game.level].y },
+      { x: position.x, y: position.y + 116 },
+      { x: position.x, y: position.y },
     ];
-    var sides = [];
-    for (let i = 0; i < points.length - 1; i++) {
-      sides.push([
-        { x: points[i].x, y: points[i].y },
-        { x: points[i + 1].x, y: points[i + 1].y },
-      ]);
-    }
+
+    var sides = game.collision.pointToSide(points);
+
     points.pop();
 
     return { p: points, s: sides };
