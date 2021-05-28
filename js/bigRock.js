@@ -2,8 +2,6 @@ class BigRock {
   constructor() {
     this.image = new Image();
     this.image.src = "./images/big-rock.png";
-
-    this.position = [{}, {}, {}, {}, { x: 372, y: -1 }];
     this.x = 372;
     this.y = -1;
     this.height = 185;

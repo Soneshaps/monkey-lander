@@ -4,8 +4,8 @@ class Banana {
     this.bananaImage.src = "images/banana.png";
     this.position = [
       [
-        { x: 500, y: 200 },
-        { x: 800, y: 200 },
+        { x: 200, y: 200 },
+        { x: 600, y: 300 },
       ],
       [
         { x: 100, y: 250 },
@@ -13,14 +13,15 @@ class Banana {
       ],
       [
         { x: 60, y: 295 },
-        { x: 900, y: 160 },
-        { x: 650, y: 360 },
+        { x: 550, y: 150 },
       ],
-      [{ x: 60, y: 120 }],
       [
-        { x: 60, y: 120 },
-        { x: 300, y: 300 },
-        { x: 610, y: 380 },
+        { x: 200, y: 220 },
+        { x: 600, y: 400 },
+      ],
+      [
+        { x: 110, y: 450 },
+        { x: 850, y: 250 },
       ],
     ];
 
@@ -81,7 +82,7 @@ class Banana {
       if (bananaCollision) {
         this.position[game.level].splice(index, 1);
         this.bananaLeftToCollect -= 1;
-        score += 200;
+        score += bananaPoint;
         game.sound.eat.play();
       }
     }

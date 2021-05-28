@@ -2,7 +2,7 @@ class Fuel {
   constructor() {
     this.fuelImage = new Image();
     this.fuelImage.src = "images/fuel-bar.png";
-    this.fuelHealth = 300;
+    this.fuelHealth = fuelHealth;
   }
   update(ctx) {
     ctx.beginPath();

@@ -29,7 +29,7 @@ class Exit {
         (ymouse - this.y) * (ymouse - this.y)
     );
     if (distance < this.radius) {
-      game.state = 0;
+      game.state = mainMenu;
       game.reset.update();
     }
   }

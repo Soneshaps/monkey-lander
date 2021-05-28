@@ -75,7 +75,7 @@ class LevelBuilderMenu {
         (ymouse - this.exitY) * (ymouse - this.exitY)
     );
     if (distance < this.radius) {
-      game.state = 0;
+      game.state = mainMenu;
       game.reset.update();
     }
   }

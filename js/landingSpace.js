@@ -90,7 +90,7 @@ class LandingSpace {
               game.sound.spawn.play();
             }
             if (game.level === 5) {
-              game.state = 2;
+              game.state = gameEnd;
             }
           }
         }

@@ -6,7 +6,7 @@ let menuDiv = document.getElementById("menu");
 let menuArea = document.getElementById("menu-area");
 
 function play() {
-  game.state = 1;
+  game.state = inGame;
   game.sound.spawn.play();
 }
 
@@ -32,33 +32,33 @@ function howToPlay() {
 
 function levelOne() {
   game.level = 0;
-  game.state = 1;
+  game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
 }
 
 function levelTwo() {
   game.level = 1;
-  game.state = 1;
+  game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
 }
 function levelThree() {
   game.level = 2;
-  game.state = 1;
+  game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
 }
 function levelFour() {
   game.level = 3;
-  game.state = 1;
+  game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
 }
 
 function levelFive() {
   game.level = 4;
-  game.state = 1;
+  game.state = inGame;
   levelDiv.style.display = "none";
   menuArea.style.display = "block";
 }
