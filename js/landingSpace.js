@@ -9,7 +9,7 @@ class LandingSpace {
       { x: 400, y: 490 },
       { x: 200, y: 490 },
       { x: 120, y: 500 },
-      { x: 120, y: 500 },
+      { x: 780, y: 430 },
     ];
     this.height = 25;
     this.width = 202;
@@ -75,7 +75,7 @@ class LandingSpace {
             this.nextLevelTimer += 1;
             if (this.nextLevelTimer > 150) {
               game.level += 1;
-              game.fuel.fuelHealth = 300;
+              game.fuel.fuelHealth = fuelHealth;
               game.monkey.verticalSpeedFactor = 0.05;
               game.monkey.horizontalSpeedFactor = 0.2;
               game.monkey.horizontalSpeed = 0;
