@@ -6,7 +6,9 @@ class Fruit {
       "./images/lemon.png",
       "./images/pineapple.png",
     ];
-    this.fruitNo = Math.round(Math.random() * (this.fruitImgs.length - 1));
+    let fruitNo = Math.round(Math.random() * (this.fruitImgs.length - 1));
+
+    this.image.src = this.fruitImgs[fruitNo];
 
     this.position = [
       [{ x: 430, y: 250 }],
@@ -35,41 +37,35 @@ class Fruit {
     this.height = 48;
     this.imageHeight = 64;
     this.imageWidth = 270;
+    this.isSeen = true;
   }
-  update(ctx) {
-    for (let index = 0; index < this.position[game.level]?.length; index++) {
-      this.image.src = this.fruitImgs[this.fruitNo];
+  update(ctx, x, y) {
+    if (this.isSeen) {
       ctx.drawImage(
         this.image,
         0,
         0,
         this.imageWidth,
         this.imageHeight,
-        this.position[game.level][index].x,
-        this.position[game.level][index].y,
+        x,
+        y,
         this.imageWidth,
         this.imageHeight
       );
+      this.fruitCollision(game.monkey, this, x, y);
     }
-    this.fruitCollision(game.monkey, this);
   }
 
-  fruitCollision(rect1, rect2) {
-    for (let index = 0; index < this.position[game.level].length; index++) {
-      let fruitCollision =
-        rect1.position[game.level].x <
-          rect2.position[game.level][index].x + rect2.width &&
-        rect1.position[game.level].x + rect1.width >
-          rect2.position[game.level][index].x &&
-        rect1.position[game.level].y <
-          rect2.position[game.level][index].y + rect2.height &&
-        rect1.position[game.level].y + rect1.height >
-          rect2.position[game.level][index].y;
-      if (fruitCollision) {
-        this.position[game.level].splice(index, 1);
-        score += fruitsPoint;
-        game.sound.eat.play();
-      }
+  fruitCollision(monkey, rect2, x, y) {
+    let fruitCollision =
+      monkey.position[game.level].x < x + rect2.width &&
+      monkey.position[game.level].x + monkey.width > x &&
+      monkey.position[game.level].y < y + rect2.height &&
+      monkey.position[game.level].y + monkey.height > y;
+    if (fruitCollision) {
+      this.isSeen = false;
+      score += fruitsPoint;
+      game.sound.eat.play();
     }
   }
 }
